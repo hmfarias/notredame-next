@@ -64,11 +64,11 @@ Este repositorio contiene el código fuente de nuestra plataforma, desarrollada 
 
 ### CONSTRUIDO CON
 
+![Static Badge](https://img.shields.io/badge/NextJS-black?style=for-the-badge) como framework de desarrollo web que se basa en React y permite crear aplicaciones web interactivas.
+
 <img alt="HTML5" src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white"/> (HyperText Markup Language) como lenguaje de marcación de hipertéxto estándar utilizado para crear y diseñar páginas web.
 
 ![Static Badge](https://img.shields.io/badge/TailwindV4-orange?style=for-the-badge) para controlar el aspecto visual de las páginas web, separando el contenido (HTML) de la presentación visual (CSS).
-
-![Static Badge](https://img.shields.io/badge/NextJS-greem?style=for-the-badge) como framework de desarrollo web que se basa en React y permite crear aplicaciones web interactivas.
 
 <img alt="JavaScript" src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/> como lenguaje de programación interpretado, de alto nivel y dinámico. Se ejecuta en el navegador del cliente, lo que permite la creación de páginas web interactivas y dinámicas.
 
