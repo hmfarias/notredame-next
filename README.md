@@ -7,7 +7,7 @@
 <!-- PROJECT LOGO -->
 <div align="center">
   <a href="https://github.com/hmfarias/notredame-next">
-    <img src="https://github.com/hmfarias/notredame-next/blob/main/src/assets/logo2.png" alt="Logo" width="350" height="auto">
+    <img src="https://github.com/hmfarias/notredame-next/blob/main/public/logo.png" alt="Logo" width="350" height="auto">
   </a>
   <h2 align="center">Descubre lo que necesites en cada click</h2>
 
