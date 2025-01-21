@@ -3,7 +3,7 @@ import PageTitle from '@/components/PageTitle';
 import Link from 'next/link';
 
 export const ProductDetailPage = async ({ params }) => {
-	const id = await params.id;
+	const { id } = await params;
 
 	// Here we fetch the product data from the api using the id
 	const endpointBase = 'https://dummyjson.com/products';
