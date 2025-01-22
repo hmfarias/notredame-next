@@ -21,7 +21,7 @@ const ProductsPage = async () => {
 
 	return (
 		<>
-			<PageTitle>Products</PageTitle>
+			<PageTitle>All Products</PageTitle>
 			<ProductList products={products} />
 		</>
 	);

@@ -18,7 +18,7 @@ const ProductLayout = async ({ children }) => {
 				<div className="flex flex-col ml-2 md:ml-4">
 					<Link href="/products">All Products</Link>
 					{/* There are too many categories, I only bring 10 */}
-					{categories.slice(0, 10).map((category) => {
+					{categories.slice(0, 3).map((category) => {
 						return (
 							<Link key={category.slug} href={`/products/${category.slug}`}>
 								{category.name}

@@ -70,7 +70,7 @@ const Header = () => {
 							<Link href="/admin" onClick={toggleMenu} className="hover:text-gray-400">
 								Admin
 							</Link>
-							<Link href="/product" onClick={toggleMenu} className="hover:text-gray-400">
+							<Link href="/products" onClick={toggleMenu} className="hover:text-gray-400">
 								Products
 							</Link>
 						</nav>

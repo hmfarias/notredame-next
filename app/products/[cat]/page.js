@@ -19,7 +19,7 @@ const ProductsByCategoryPage = async ({ params }) => {
 
 	return (
 		<>
-			<PageTitle>Products</PageTitle>
+			<PageTitle>Products {cat}</PageTitle>
 			<ProductList products={products} />
 		</>
 	);
