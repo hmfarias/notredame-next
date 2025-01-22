@@ -9,7 +9,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata = {
-	title: 'Notre Dame Ecommerce',
+	title: 'NotreDame Ecommerce',
 	authors: [{ name: 'Marcelo Farias' }],
 	description: 'Aplicacion de comercio electrónico',
 	keywords:
