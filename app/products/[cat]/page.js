@@ -5,8 +5,6 @@ import ProductList from '@/components/ProductList';
 const ProductsByCategoryPage = async ({ params }) => {
 	const { cat } = await params;
 	const { payload: products, error, message } = await getProducts(cat);
-	console.log('products');
-	console.log(products);
 
 	if (error) {
 		return (

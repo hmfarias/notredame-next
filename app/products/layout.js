@@ -1,13 +1,25 @@
+import getCategoriesList from '@/actions/getCategoriesList';
+import PageTitle from '@/components/PageTitle';
 import ProductLayoutClient from '@/components/ProductLayoutClient';
 
 const ProductLayout = async ({ children }) => {
-	// Fetch categories from the API
-	const endpointBase = 'https://dummyjson.com/products';
-	const endpoint = `${endpointBase}/categories`;
-	const data = await fetch(endpoint);
-	const categories = await data.json();
+	const { payload: categories, error, message } = await getCategoriesList();
 
-	return <ProductLayoutClient categories={categories}>{children} </ProductLayoutClient>;
+	if (error) {
+		return (
+			<>
+				<PageTitle>Error</PageTitle>
+				<p>{message}</p>
+			</>
+		);
+	}
+
+	return (
+		<>
+			return <ProductLayoutClient categories={categories}>{children}</ProductLayoutClient>
+			;
+		</>
+	);
 };
 
 export default ProductLayout;

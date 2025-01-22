@@ -1,10 +1,13 @@
+/**
+ * * actions/getProducts.js
+ * Fetch and return products or products by category from the API depending if recieves a category parameter
+ */
+
 const getProducts = async (category) => {
 	try {
 		const endpointBase = 'https://dummyjson.com/products';
 
 		const endpoint = category ? `${endpointBase}/category/${category}` : endpointBase;
-		console.log('endpoint');
-		console.log(endpoint);
 
 		const data = await fetch(endpoint);
 		const { products } = await data.json();

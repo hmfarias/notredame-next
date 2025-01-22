@@ -6,7 +6,6 @@ import Link from 'next/link';
 
 const ProductLayoutClient = ({ categories, children }) => {
 	const pathname = usePathname(); // Get the current path
-	console.log(categories);
 
 	return (
 		<div className="flex flex-col md:flex-row gap-8">
