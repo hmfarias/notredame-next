@@ -5,7 +5,7 @@ import Link from 'next/link';
 export const ProductDetailPage = async ({ params }) => {
 	const { id } = await params;
 
-	// Here we fetch the product data from the api using the id
+	// Here I fetch the product data from the api using the id
 	const endpointBase = 'https://dummyjson.com/products';
 	const limit = 30; // 30 is the default value (cero for all products)
 	const endpoint = `${endpointBase}/${id}?limit=${limit}`;

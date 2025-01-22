@@ -3,13 +3,16 @@
  * Returns the home page
  */
 
-import ProductList from '@/components/ProductList';
+import PageTitle from '@/components/PageTitle';
 
 const HomePage = async () => {
 	return (
-		<div>
-			<h1>Welcome to Notre Dame</h1>
-		</div>
+		<>
+			<PageTitle>Home</PageTitle>
+			<div className=" p-2 md:p-4">
+				<h1>Welcome to Notre Dame</h1>
+			</div>
+		</>
 	);
 };
 

@@ -11,9 +11,9 @@ import Footer from '@/components/Footer';
 export const metadata = {
 	title: 'NotreDame Ecommerce',
 	authors: [{ name: 'Marcelo Farias' }],
-	description: 'Aplicacion de comercio electrónico',
+	description: 'E-Commerce Aplication',
 	keywords:
-		'comercio electrónico, aplicación, nextjs, tailwind, sass, react, lucide, tailwindcss, Horacio Gutierrez, programador, argentina, ecommerce',
+		'ecommerce, polirubro, application, nextjs, tailwind, sass, react, lucide, tailwindcss, Marcelo Farias, programmer, argentina, ecommerce',
 };
 
 export default function RootLayout({ children }) {
