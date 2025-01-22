@@ -3,15 +3,21 @@
  * Returns the Product page
  */
 
+import getProducts from '@/actions/getProducts';
 import PageTitle from '@/components/PageTitle';
 import ProductList from '@/components/ProductList';
 
-export const ProductsPage = async () => {
-	const endpointBase = 'https://dummyjson.com/products';
-	const limit = 30; // 30 is the default value (cero for all products)
-	const endpoint = `${endpointBase}?limit=${limit}`;
-	const data = await fetch(endpoint);
-	const { products } = await data.json();
+const ProductsPage = async () => {
+	const { payload: products, error, message } = await getProducts();
+
+	if (error) {
+		return (
+			<>
+				<PageTitle>Error</PageTitle>
+				<p>{message}</p>
+			</>
+		);
+	}
 
 	return (
 		<>

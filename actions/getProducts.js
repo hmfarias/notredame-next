@@ -1,0 +1,26 @@
+const getProducts = async (category) => {
+	try {
+		const endpointBase = 'https://dummyjson.com/products';
+
+		const endpoint = category ? `${endpointBase}/category/${category}` : endpointBase;
+		console.log('endpoint');
+		console.log(endpoint);
+
+		const data = await fetch(endpoint);
+		const { products } = await data.json();
+
+		return {
+			payload: products,
+			message: 'Products fetched successfully',
+			error: false,
+		};
+	} catch (error) {
+		return {
+			payload: null,
+			message: 'Error fetching products',
+			error: true,
+		};
+	}
+};
+
+export default getProducts;
