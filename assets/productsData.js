@@ -1,25 +1,4 @@
-// GET - POST - PUT - DELETE - PATCH - OPTIONS - HEAD are the supported methods
-/**
- * @module app/api/products/route.js
- * Implement the following routes:
- * @route GET /api/products
- * @route GET /api/products/:id
- * @route POST /api/products
- * @route PUT /api/products/:id
- * @route DELETE /api/products/:id
- * @route PATCH /api/products/:id
- * @route OPTIONS /api/products
- * @route HEAD /api/products
- * @returns {Object} NextResponse
- * @exports handler
- * @description This is the API route for products
- */
-
-import { db } from '@/firebase';
-import { collection, getDocs } from 'firebase/firestore';
-import { NextRequest, NextResponse } from 'next/server';
-
-const products2 = [
+export const products = [
 	{
 		id: 1,
 		title: 'Essence Mascara Lash Princess',
@@ -1768,49 +1747,3 @@ const products2 = [
 		thumbnail: 'https://cdn.dummyjson.com/products/images/groceries/Kiwi/thumbnail.png',
 	},
 ];
-
-// Route Handlers
-export const GET = async () => {
-	// to simulate a delay in the response
-	// await new Promise((resolve) => setTimeout(resolve, 3000));
-
-	//bring the collection from firebase
-	const productsCollection = collection(db, 'products');
-
-	try {
-		//bring the products from the collection
-		const snapshot = await getDocs(productsCollection);
-		//snapshot returns: {docs: [all documents here], size: 0, empty: true/false}
-		//we need iterate snapshot in order to obtain the products from docs
-		const products = snapshot.docs.map((documenRef) => {
-			const idFirebase = DocumentReference.id; //the firebase id
-			const productData = documenRef.data(); //the data corresponding to the firebase id {id, description, category, .... etc}
-			// replace the original id from jsondumy for the firebase id
-			productData.id = idFirebase;
-
-			return productData;
-		});
-
-		return NextResponse.json({
-			message: 'Products fetched',
-			error: false,
-			payload: products,
-		});
-	} catch (error) {
-		return NextResponse.json({
-			message: 'Error fetching products',
-			error: true,
-			payload: null,
-		});
-	}
-};
-
-export const POST = async (req) => {
-	console.log('POST method');
-
-	// this is how you can get the body of the request
-	// fetch("url", {body: JSON.stringify({key: "value"})})
-	console.log(await req.json());
-
-	return NextResponse.json({ message: 'POST method' });
-};

@@ -12,14 +12,18 @@ const getProducts = async (category) => {
 	try {
 		const endpointBase = 'https://dummyjson.com/products';
 		const enpointApiNext = 'http://localhost:3000/api/products';
-		console.log(`${endpointBase}/category/${category}`);
 
-		const endpoint = category ? `${endpointBase}/category/${category}` : enpointApiNext;
+		console.log('categoria en getproducts');
+		console.log(category);
+
+		const endpoint = category ? `${endpointBase}/category/${category}` : endpointBase;
+		console.log('endpoint en getProducts');
+		console.log(endpoint);
 
 		//the next three lines will be deleted when I have the API ready with the same response (error,message,payload)
 		const response = await fetch(endpoint);
 		const data = await response.json();
-		const products = category ? data.products : data.payload;
+		const products = category ? data.products : data.products;
 
 		// This is the original code I will use this when I have the API ready with the same response (error,message,payload)
 		// const data = await fetch(endpoint);

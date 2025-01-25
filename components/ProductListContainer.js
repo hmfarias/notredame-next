@@ -15,6 +15,9 @@ import ProductList from './ProductList';
 const ProductListContainer = async ({ category }) => {
 	const { payload: products, error, message } = await getProducts(category);
 
+	console.log('products in productlistcontainer');
+	console.log(products);
+
 	if (error) {
 		return (
 			<>
