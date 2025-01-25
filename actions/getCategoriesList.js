@@ -8,11 +8,12 @@
 const getCategoriesList = async () => {
 	try {
 		const endpointBase = 'https://dummyjson.com/products';
+		const endpointApiNext = 'http://localhost:3000/api';
 
-		const endpoint = `${endpointBase}/categories`;
+		const endpoint = `${endpointApiNext}/categories`;
 
 		const data = await fetch(endpoint);
-		const categories = await data.json();
+		const { payload: categories } = await data.json();
 
 		return {
 			payload: categories,

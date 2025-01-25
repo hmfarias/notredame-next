@@ -7,15 +7,12 @@
  */
 
 const getProducts = async (category) => {
-	console.log(category);
-
 	try {
-		const enpointApiNext = 'http://localhost:3000/api/products';
+		const endpointApiNext = 'http://localhost:3000/api/products';
 
-		console.log('categoria en getproducts');
-		console.log(category);
-
-		const endpoint = category ? `${enpointApiNext}?category=${category}` : enpointApiNext;
+		const endpoint = category
+			? `${endpointApiNext}?category=${category}`
+			: endpointApiNext;
 		console.log('endpoint en getProducts');
 		console.log(endpoint);
 

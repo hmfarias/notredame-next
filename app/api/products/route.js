@@ -18,8 +18,6 @@ import { NextResponse } from 'next/server';
 export const GET = async (req) => {
 	const searchParams = req.nextUrl.searchParams;
 	const category = searchParams.get('category');
-	console.log('Categoria en route');
-	console.log(category);
 
 	// to simulate a delay in the response
 	// await new Promise((resolve) => setTimeout(resolve, 3000));

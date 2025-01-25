@@ -1,0 +1,39 @@
+/**
+ * @module actions/migrateCategories
+ * @description Migrate the categories from the local array to the firebase database
+ *
+ */
+
+import { categories } from '@/assets/categoriesData';
+import { db } from '@/firebase';
+import { addDoc, collection, getDocs } from 'firebase/firestore';
+
+const migrateCategories = async () => {
+	try {
+		// Steps:
+		// 1. get reference from the DB (using the 'db' variable)
+
+		// 2. get reference to the collection of categories (using the 'collection' variable). If the selected collection does not exist, as soon as something is saved in it, firebase will create it.
+		const categoriesCollection = collection(db, 'categories');
+
+		// Verify if the collection already has documents
+		const existingDocs = await getDocs(categoriesCollection);
+
+		if (!existingDocs.empty) {
+			console.log(
+				'The "Categories" collection already exists.The migration will not be performed.'
+			);
+			return;
+		}
+
+		// 3.go through the array of categories and add each one to the fierebase in the collection selected.
+		categories.forEach((category) => {
+			addDoc(categoriesCollection, category).then(() => {
+				console.log('Category added', category.slug);
+			});
+		});
+	} catch (error) {
+		console.error('Error during migration:', error);
+	}
+};
+export default migrateCategories;

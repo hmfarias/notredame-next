@@ -9,6 +9,7 @@
  * @description The Home Page of the app
  */
 
+import migrateCategories from '@/actions/migrateCategories';
 import migrateProducts from '@/actions/migrateProducts';
 import Button from '@/components/Button';
 import PageTitle from '@/components/PageTitle';
@@ -16,7 +17,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const HomePage = async () => {
-	// migrateProducts(); //used just one time to add the products to firestore
+	migrateProducts(); //used just one time to add the products to firebase
+	migrateCategories(); //used just one time to add the categories to firebase
 	return (
 		<>
 			<PageTitle>Home</PageTitle>
