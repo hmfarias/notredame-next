@@ -17,7 +17,7 @@ const ProductList = ({ products }) => {
 						className="shadow-md rounded-md relative aspect-[1/1.5] bg-secondary text-text overflow-hidden group flex flex-col"
 						key={product.id}
 					>
-						{/* Imagen en la parte superior */}
+						{/* Image at the top card */}
 						<div className="relative flex-grow">
 							<Image
 								src={product.thumbnail}
@@ -27,8 +27,8 @@ const ProductList = ({ products }) => {
 							/>
 						</div>
 
-						{/* Contenido en la parte inferior */}
-						<div className="z-10 bg-accent/40 backdrop-blur-xl w-full p-4 rounded-b-md">
+						{/* Content at the bottom */}
+						<div className="bg-accent/40 backdrop-blur-xl w-full px-4 py-2 rounded-b-md">
 							<div className="flex justify-between mb-2">
 								<h2 className="font-bold text-xl max-w-[270px] truncate">
 									{product.title}
