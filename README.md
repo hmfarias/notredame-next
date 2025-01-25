@@ -58,6 +58,12 @@ Este repositorio contiene el código fuente de nuestra plataforma, desarrollada 
 
 [Volver al menú](#top)
 
+<div align="center">
+  <a href="https://github.com/hmfarias/notredame-next">
+    <img src="https://github.com/hmfarias/notredame-next/blob/main/public/hero-desktop.png" alt="Hero image" width="600" height="auto">
+  </a>
+</div>
+
 <hr>
 
 <a name="consturido"></a>
