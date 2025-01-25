@@ -14,18 +14,22 @@ const ProductList = ({ products }) => {
 			{products.map((product) => {
 				return (
 					<article
-						className="shadow-md rounded-md relative aspect-[1/1.15] bg-secondary text-text overflow-hidden group "
+						className="shadow-md rounded-md relative aspect-[1/1.5] bg-secondary text-text overflow-hidden group flex flex-col"
 						key={product.id}
 					>
-						<Image
-							src={product.thumbnail}
-							alt={`Thumbnail of ${product.title}`}
-							fill
-							className="group-hover:scale-125 transition-all"
-						/>
+						{/* Imagen en la parte superior */}
+						<div className="relative flex-grow">
+							<Image
+								src={product.thumbnail}
+								alt={`Thumbnail of ${product.title}`}
+								fill
+								className="group-hover:scale-115 transition-transform duration-500 ease-in-out  object-cover rounded-t-md"
+							/>
+						</div>
 
-						<div className="z-10 absolute bottom-0 bg-accent/40 backdrop-blur-xl l-0 w-full p-2">
-							<div className="flex justify-between">
+						{/* Contenido en la parte inferior */}
+						<div className="z-10 bg-accent/40 backdrop-blur-xl w-full p-4 rounded-b-md">
+							<div className="flex justify-between mb-2">
 								<h2 className="font-bold text-xl max-w-[270px] truncate">
 									{product.title}
 								</h2>
