@@ -1,3 +1,15 @@
+/**
+ * @module app/products/layout
+ * @returns {JSX.Element} JSX.Element - the Product Layout (server-side)
+ * @requires getCategoriesList
+ * @requires PageTitle
+ * @requires ProductLayoutClient
+ * @param {Object} props - The props object
+ * @param {JSX.Element} props.children - The children components
+ * @exports ProductLayout
+ * @description The Product Layout (server-side)
+ */
+
 import getCategoriesList from '@/actions/getCategoriesList';
 import PageTitle from '@/components/PageTitle';
 import ProductLayoutClient from '@/components/ProductLayoutClient';
@@ -14,12 +26,7 @@ const ProductLayout = async ({ children }) => {
 		);
 	}
 
-	return (
-		<>
-			return <ProductLayoutClient categories={categories}>{children}</ProductLayoutClient>
-			;
-		</>
-	);
+	return <ProductLayoutClient categories={categories}>{children}</ProductLayoutClient>;
 };
 
 export default ProductLayout;

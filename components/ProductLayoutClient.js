@@ -9,13 +9,15 @@ const ProductLayoutClient = ({ categories, children }) => {
 
 	return (
 		<div className="flex flex-col md:flex-row gap-8">
-			<aside className="min-w-[200px]">
+			<aside className="min-w-[300px] bg-secondary">
 				<PageTitle>Filters</PageTitle>
 				<div className="flex flex-col ml-2 md:ml-4">
 					<Link
 						href="/products"
-						className={`hover:text-gray-500 ${
-							pathname === '/products' ? 'font-bold text-accent bg-accent/30' : ''
+						className={`hover:text-gray-500 pl-2${
+							pathname === '/products'
+								? 'font-bold bg-accent/30 rounded-md px-2 py-1'
+								: ''
 						}`}
 					>
 						All Products
@@ -27,8 +29,10 @@ const ProductLayoutClient = ({ categories, children }) => {
 							<Link
 								key={category.slug}
 								href={categoryPath}
-								className={`hover:text-gray-500 ${
-									pathname === categoryPath ? 'font-bold text-accent bg-accent/30' : ''
+								className={`hover:text-gray-500 pl-2${
+									pathname === categoryPath
+										? 'font-bold bg-accent/30 rounded-md px-2 py-1'
+										: ''
 								}`}
 							>
 								{category.name}

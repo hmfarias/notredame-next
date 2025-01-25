@@ -1,11 +1,16 @@
 /**
- * * home/page.js
- * Returns the home page
+ * @module app/(home)/page.js
+ * @returns {JSX.Element} JSX.Element - the Home Page
+ * @exports HomePage
+ * @requires Button
+ * @requires PageTitle
+ * @requires Image
+ * @requires Link
+ * @description The Home Page of the app
  */
 
 import Button from '@/components/Button';
 import PageTitle from '@/components/PageTitle';
-import { ArrowRightIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -15,8 +20,9 @@ const HomePage = async () => {
 			<PageTitle>Home</PageTitle>
 			<div className="mt-4 flex grow flex-col gap-4 md:flex-row">
 				<div className="flex flex-col justify-center items-center gap-6 rounded-lg bg-background md:w-2/5 md:px-5 text-center">
-					<p className="text-xl text-text md:text-3xl md:leading-normal">
-						<strong>Welcome to NotreDame</strong>
+					<p className="text-xl text-text md:text-3xl md:leading-normal px-10">
+						<strong>Welcome to NotreDame.</strong> An online multi-shop where you can find
+						any product you need!
 					</p>
 					<Link href="/products">
 						<Button className>Start -&gt;</Button>

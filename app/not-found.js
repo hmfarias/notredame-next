@@ -1,6 +1,12 @@
 /**
- * * NotFound.js
- * returns 404 Not Found page with a Home Page button link
+ * @module app/not-found.js
+ * @returns {JSX.Element} JSX.Element - the 404 Not Found page
+ * @exports NotFoundPage
+ * @requires Button
+ * @requires Image
+ * @requires Link
+ * @description
+ * This module exports the NotFoundPage component. It is a functional component that displays a 404 Not Found page with a Home Page button link
  */
 
 import Button from '@/components/Button';

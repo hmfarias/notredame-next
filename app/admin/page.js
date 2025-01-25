@@ -1,6 +1,9 @@
 /**
- * * admin/page.js
- * Returns the Admin Panel page
+ * @module app/admin/page.js
+ * @returns {JSX.Element} JSX.Element - the Admin Panel page
+ * @exports AdminPage
+ * @requires PageTitle
+ * @description The Admin Panel page
  */
 
 import PageTitle from '@/components/PageTitle';

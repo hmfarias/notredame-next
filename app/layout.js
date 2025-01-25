@@ -1,6 +1,13 @@
 /**
- * * Layout.js
- * Corresponds to the main layout of the application.
+ * @module app/layout.js
+ * @returns {JSX.Element} the main layout of the application
+ * @exports RootLayout
+ * @requires Header
+ * @requires Footer
+ * @description
+ * The RootLayout component is the main layout of the application. It includes the Header and Footer components.
+ * The Header component includes the site title and navigation menu.
+ * The Footer component includes the site's footer content.
  */
 
 import './globals.css';

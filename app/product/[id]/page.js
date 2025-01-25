@@ -1,3 +1,13 @@
+/**
+ * @module app/product/[id]/page.js
+ * @returns {JSX.Element} JSX.Element - the Product Detail page
+ * @exports ProductDetailPage
+ * @requires Button
+ * @requires PageTitle
+ * @requires Link
+ * @description The Product Detail page
+ */
+
 import Button from '@/components/Button';
 import PageTitle from '@/components/PageTitle';
 import Link from 'next/link';
