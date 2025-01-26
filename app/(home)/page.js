@@ -23,10 +23,12 @@ const HomePage = async () => {
 		<>
 			<PageTitle>Home</PageTitle>
 			<div className="mt-4 flex grow flex-col gap-4 md:flex-row">
-				<div className="flex flex-col justify-center items-center gap-6 rounded-lg bg-background md:w-2/5 md:px-5 text-center">
-					<p className="text-xl text-text md:text-3xl md:leading-normal px-10">
-						<strong>Welcome to NotreDame.</strong> An online multi-shop where you can find
-						any product you need!
+				<div className="flex flex-col justify-center items-center gap-2 md:gap-4rounded-lg bg-background md:w-2/5 md:px-5 text-center text-text md:leading-normal">
+					<p className="text-xl md:text-3xl px-5">
+						<strong>Welcome to NotreDame !</strong>
+					</p>
+					<p className="text-l md:text-2xl px-5">
+						An online multi-shop where you can find any product you need!
 					</p>
 					<Link href="/products">
 						<Button className>Start -&gt;</Button>

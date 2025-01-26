@@ -23,7 +23,7 @@ const ProductList = ({ products }) => {
 								src={product.thumbnail}
 								alt={`Thumbnail of ${product.title}`}
 								fill
-								className="group-hover:scale-115 transition-transform duration-500 ease-in-out  object-cover rounded-t-md"
+								className="group-hover:scale-125 transition-transform duration-500 ease-in-out  object-cover rounded-t-md"
 							/>
 						</div>
 

@@ -9,9 +9,10 @@ const ProductLayoutClient = ({ categories, children }) => {
 
 	return (
 		<div className="flex flex-col md:flex-row gap-8">
-			<aside className="min-w-[300px] bg-secondary">
+			<aside className="min-w-[300px]">
 				<PageTitle>Filters</PageTitle>
-				<div className="flex flex-col ml-2 md:ml-4">
+				<div className="flex flex-col md:leading-7 bg-secondary p-2 rounded-md">
+					<p className="font-bold text-xl">Category</p>
 					<Link
 						href="/products"
 						className={`hover:text-gray-500 pl-2${
