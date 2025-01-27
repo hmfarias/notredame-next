@@ -14,6 +14,9 @@ import './globals.css';
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import AuthContextProvider from '@/providers/AuthProvider';
+import CartContextProvider from '@/providers/CartProvider';
+import { ToastContainer } from 'react-toastify';
 
 export const metadata = {
 	title: 'NotreDame Ecommerce',
@@ -27,9 +30,14 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className="bg-background min-h-screen flex flex-col">
-				<Header />
-				<main className="grow p-4">{children}</main>
-				<Footer />
+				<AuthContextProvider>
+					<CartContextProvider>
+						<Header />
+						<main className="grow p-4">{children}</main>
+						<Footer />
+						<ToastContainer />
+					</CartContextProvider>
+				</AuthContextProvider>
 			</body>
 		</html>
 	);

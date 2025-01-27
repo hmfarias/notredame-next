@@ -4,14 +4,18 @@
  */
 
 'use client';
+import { CartContext } from '@/providers/CartProvider';
 import { CircleUserRound, Menu, ShoppingCartIcon, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import CartWidget from './CartWidget';
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
-	const cartCounter = 77; // Hard coded for now
+	const { cartState } = useContext(CartContext);
+	console.log('5️⃣ cartState in header:', cartState);
+
 	const toggleMenu = () => {
 		setMenuOpen((prev) => !prev);
 		// Aquí puedes agregar lógica para mostrar u ocultar el menú
@@ -31,14 +35,15 @@ const Header = () => {
 
 			{/* Cart Counter and Navbar */}
 			<div className="flex items-center space-x-4">
-				{/* Cart Counter */}
+				{/* Cart Counter
 				<Link
 					href="/cart"
 					className="hover:text-gray-400 flex items-center space-x-6 text-l"
 				>
 					<ShoppingCartIcon className="mr-1 w-5 h-5" />
-					<span className="text-l">{cartCounter}</span>
-				</Link>
+					<span className="text-l">{77}</span>
+				</Link> */}
+				<CartWidget />
 
 				{/* Navbar */}
 				<nav className="hidden md:flex space-x-4">

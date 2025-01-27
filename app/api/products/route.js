@@ -38,7 +38,7 @@ export const GET = async (req) => {
 			const idFirebase = documenRef.id; //the firebase id
 			const productData = documenRef.data(); //the data corresponding to the firebase id {id, description, category, .... etc}
 			// replace the original id from dumyJson for the firebase id
-			productData.id = idFirebase;
+			// productData.id = idFirebase;
 
 			return productData;
 		});

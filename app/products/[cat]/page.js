@@ -7,7 +7,6 @@
  */
 
 import LoadingSkeleton from '@/components/LoadingSkeleton';
-import Loading from '@/components/LoadingSkeleton';
 import PageTitle from '@/components/PageTitle';
 import ProductListContainer from '@/components/ProductListContainer';
 import { Suspense } from 'react';

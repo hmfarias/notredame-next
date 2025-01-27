@@ -9,41 +9,13 @@
 
 import Button from '@/components/Button';
 import PageTitle from '@/components/PageTitle';
-import { auth } from '@/firebase';
-import {
-	signInWithEmailAndPassword,
-	signInWithPopup,
-	onAuthStateChanged,
-	createUserWithEmailAndPassword,
-	signOut,
-} from 'firebase/auth';
-import { useEffect, useState } from 'react';
+import { AuthContext } from '@/providers/AuthProvider';
+import { useContext } from 'react';
 
 const AdminPage = () => {
-	const [logedIn, setLogedIn] = useState(false);
-
-	useEffect(() => {
-		onAuthStateChanged(auth, (user) => {
-			if (user) {
-				setLogedIn(true);
-			} else {
-				setLogedIn(false);
-			}
-		});
-	}, []);
-
-	const handleLogin = async () => {
-		console.log('login');
-		const result = await signInWithEmailAndPassword(
-			auth,
-			'admin@notredame.com',
-			'admin123'
-		);
-	};
-	const handleLogout = async () => {
-		console.log('logout');
-		await signOut(auth);
-	};
+	// consumes the context
+	const { logedIn, handleLogin, handleLogout } = useContext(AuthContext);
+	console.log('🇮🇪 logedin:', logedIn);
 
 	return (
 		<>

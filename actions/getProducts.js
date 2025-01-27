@@ -13,8 +13,6 @@ const getProducts = async (category) => {
 		const endpoint = category
 			? `${endpointApiNext}?category=${category}`
 			: endpointApiNext;
-		console.log('endpoint en getProducts');
-		console.log(endpoint);
 
 		const data = await fetch(endpoint);
 		const { payload: products } = await data.json();
