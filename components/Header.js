@@ -5,11 +5,13 @@
 
 'use client';
 import { CartContext } from '@/providers/CartProvider';
-import { CircleUserRound, Menu, ShoppingCartIcon, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useContext, useState } from 'react';
 import CartWidget from './CartWidget';
+import AuthLink from './AuthLink';
+import AdminLink from './AdminLink';
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -53,9 +55,10 @@ const Header = () => {
 					<Link href="/products" className="hover:text-gray-400 text-center">
 						Products
 					</Link>
-					<Link href="/admin" className="hover:text-gray-400">
-						<CircleUserRound className="w-6 h-6" />
-					</Link>
+
+					<AdminLink />
+
+					<AuthLink />
 				</nav>
 				<div className="md:hidden">
 					<button onClick={toggleMenu} className="focus:outline-none flex items-center">

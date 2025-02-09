@@ -14,8 +14,7 @@ import { useContext } from 'react';
 
 const AdminPage = () => {
 	// consumes the context
-	const { logedIn, handleLogin, handleLogout } = useContext(AuthContext);
-	console.log('🇮🇪 logedin:', logedIn);
+	const { logedIn, handleLogin, handleLogout, currentUser } = useContext(AuthContext);
 
 	return (
 		<>
