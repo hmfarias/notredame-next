@@ -34,7 +34,7 @@ export const AuthContextProvider = (props) => {
 		try {
 			const userCredential = await signInWithEmailAndPassword(auth, email, password);
 			const user = userCredential.user;
-			showSuccessToast(`Welcome back, ${user.email}!`);
+			showSuccessToast(`Welcome back, ${user.email}!`, 1500);
 		} catch (error) {
 			let errorMessage;
 			switch (error.code) {

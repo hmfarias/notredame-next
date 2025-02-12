@@ -20,7 +20,6 @@ export const GET = async (req) => {
 		// Get the 'ID' search parameter from the URL
 		const searchParams = req.nextUrl.searchParams;
 		const id = Number(searchParams.get('id')); // id is a number in firebase
-		console.log('🇲🇵 id:', id);
 		if (!id) {
 			return NextResponse.json({
 				message: 'ID is required',
@@ -37,7 +36,7 @@ export const GET = async (req) => {
 
 		// Obtain documents that coincide with the filter
 		const snapshot = await getDocs(filter);
-		console.log('🇳🇬 SNAPSHOT:', snapshot.docs[0]);
+
 		//Verify if there are documents in the result
 		if (snapshot.empty) {
 			return NextResponse.json({
@@ -50,7 +49,7 @@ export const GET = async (req) => {
 		//snapshot returns: {docs: [all documents here], size: 0, empty: true/false ...}
 		//in this case, we only have one document, so we can access it directly
 		const product = snapshot.docs[0].data();
-		console.log('🐦 product:', product);
+
 		return NextResponse.json({
 			message: 'Product fetched',
 			error: false,

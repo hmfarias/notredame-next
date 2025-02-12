@@ -11,8 +11,6 @@ const AuthLink = () => {
 	const { logedIn, handleLogout, currentUser } = useContext(AuthContext);
 	const router = useRouter();
 
-	console.log('🇮🇪 logedin:', logedIn);
-
 	const handleClick = () => {
 		if (logedIn) {
 			handleLogout();
@@ -20,7 +18,6 @@ const AuthLink = () => {
 			router.push('/login');
 		}
 	};
-	console.log('🇬🇦 currentUser in Link:', currentUser);
 
 	return (
 		<button

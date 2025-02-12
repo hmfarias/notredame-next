@@ -2,7 +2,7 @@
 
 import { AuthContext } from '@/providers/AuthProvider';
 import { useRouter } from 'next/navigation';
-import { use, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 const LoginPage = () => {
 	const [email, setEmail] = useState('');
@@ -14,7 +14,7 @@ const LoginPage = () => {
 		if (logedIn) {
 			router.push('/');
 		}
-	}, [logedIn, router]);
+	}, [logedIn]);
 
 	const methods = {
 		email: setEmail,

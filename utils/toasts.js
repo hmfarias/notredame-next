@@ -14,28 +14,28 @@ import { toast } from 'react-toastify';
 
 // Generic functions for different types of notifications
 
-export const showWarningToast = (message) => {
+export const showWarningToast = (message, duration = 3500) => {
 	toast.warning(<span dangerouslySetInnerHTML={{ __html: message }} />, {
 		position: 'top-right',
-		autoClose: 3500,
+		autoClose: duration,
 		closeOnClick: true,
 		theme: 'light',
 	});
 };
 
-export const showSuccessToast = (message) => {
+export const showSuccessToast = (message, duration = 3500) => {
 	toast.success(<span dangerouslySetInnerHTML={{ __html: message }} />, {
 		position: 'top-right',
-		autoClose: 3500,
+		autoClose: duration,
 		closeOnClick: true,
 		theme: 'light',
 	});
 };
 
-export const showErrorToast = (message) => {
+export const showErrorToast = (message, duration = 3500) => {
 	toast.error(<span dangerouslySetInnerHTML={{ __html: message }} />, {
 		position: 'top-right',
-		autoClose: 3500,
+		autoClose: duration,
 		closeOnClick: true,
 		theme: 'light',
 	});

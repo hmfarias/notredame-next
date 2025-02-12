@@ -10,7 +10,7 @@
 function Button(props) {
 	return (
 		<button
-			className=" bg-primary text-text px-6 py-3 rounded-lg shadow-lg hover:bg-accent focus:outline-none min-w-1"
+			className={`bg-primary text-text px-6 py-3 rounded-lg shadow-lg hover:bg-accent focus:outline-none min-w-1 ${props.className}`}
 			onClick={props.onClick || null}
 		>
 			{props.children}
