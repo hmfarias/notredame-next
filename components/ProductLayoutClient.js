@@ -1,4 +1,15 @@
 'use client';
+/**
+ * @module components/ProductLayoutClient.js
+ * @returns {JSX.Element} - the Product Layout Client component
+ * @exports ProductLayoutClient
+ * @requires usePathname
+ * @requires useRouter
+ * @requires PageTitle
+ * @requires CategoryLink
+ * @description The Product Layout Client component returns a product layout for the client side
+ */
+
 import { usePathname, useRouter } from 'next/navigation';
 import PageTitle from '@/components/PageTitle';
 import CategoryLink from './CategoryLink';

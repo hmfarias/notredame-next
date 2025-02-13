@@ -1,4 +1,20 @@
 'use client';
+/**
+ * @module providers/AuthProvider.js
+ * @returns {Object} - the Auth Context Provider
+ * @exports AuthContextProvider
+ * @requires auth
+ * @requires showErrorToast
+ * @requires showSuccessToast
+ * @requires onAuthStateChanged
+ * @requires signInWithEmailAndPassword
+ * @requires signOut
+ * @requires createContext
+ * @requires useEffect
+ * @requires useState
+ * @description The Auth Context Provider is a React context provider that manages the authentication state of the application. It provides the current user, whether the user is logged in or not, and functions to handle user login and logout.
+ */
+
 // Steps to create a context provider
 // 1. Create a context using React.createContext (import createContext from React)
 import { auth } from '@/firebase';
@@ -19,7 +35,18 @@ export const AuthContextProvider = (props) => {
 
 	// This is the function that will be called when the user logs in or out
 	useEffect(() => {
-		onAuthStateChanged(auth, (user) => {
+		// Ensure that the user is logged out the first time the application is started.
+		signOut(auth)
+			.then(() => {
+				console.log('Disconnect user at the start of the app.');
+				setLogedIn(false);
+				setCurrentUser(null);
+			})
+			.catch((error) => {
+				console.error('Error disconnecting user:', error);
+			});
+
+		const unsuscribe = onAuthStateChanged(auth, (user) => {
 			if (user) {
 				setLogedIn(true);
 				setCurrentUser(user);
@@ -28,13 +55,17 @@ export const AuthContextProvider = (props) => {
 				setCurrentUser(null);
 			}
 		});
+		// clean up the unsubscribe function
+		return () => {
+			unsuscribe();
+		};
 	}, []);
 
 	const handleLogin = async (email, password) => {
 		try {
 			const userCredential = await signInWithEmailAndPassword(auth, email, password);
 			const user = userCredential.user;
-			showSuccessToast(`Welcome back, ${user.email}!`, 1500);
+			showSuccessToast(`Welcome back, ${user.email}!`, 700);
 		} catch (error) {
 			let errorMessage;
 			switch (error.code) {
@@ -61,6 +92,7 @@ export const AuthContextProvider = (props) => {
 	const handleLogout = async () => {
 		console.log('logout');
 		await signOut(auth);
+		showSuccessToast(`User desconnected.`, 700);
 	};
 
 	return (

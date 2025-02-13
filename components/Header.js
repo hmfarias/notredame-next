@@ -1,9 +1,22 @@
+'use client';
 /**
- * * Header.js
- * Return the header component for the app
+ * @module components/Header.js
+ * @returns {JSX.Element} - the Header component
+ * @exports Header
+ * @requires CartContext
+ * @requires Menu
+ * @requires X
+ * @requires Image
+ * @requires Link
+ * @requires useContext
+ * @requires useState
+ * @requires CartWidget
+ * @requires AuthLink
+ * @requires AdminLink
+ * @requires AuthLinkMobile
+ * @description The Header component returns the header of the app
  */
 
-'use client';
 import { CartContext } from '@/providers/CartProvider';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
@@ -12,6 +25,7 @@ import { useContext, useState } from 'react';
 import CartWidget from './CartWidget';
 import AuthLink from './AuthLink';
 import AdminLink from './AdminLink';
+import AuthLinkMobile from './AuthLinkMobile';
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -37,14 +51,7 @@ const Header = () => {
 
 			{/* Cart Counter and Navbar */}
 			<div className="flex items-center space-x-4">
-				{/* Cart Counter
-				<Link
-					href="/cart"
-					className="hover:text-gray-400 flex items-center space-x-6 text-l"
-				>
-					<ShoppingCartIcon className="mr-1 w-5 h-5" />
-					<span className="text-l">{77}</span>
-				</Link> */}
+				{/* Cart with counter */}
 				<CartWidget />
 
 				{/* Navbar */}
@@ -75,12 +82,13 @@ const Header = () => {
 							<Link href="/" onClick={toggleMenu} className="hover:text-gray-400">
 								Home
 							</Link>
-							<Link href="/admin" onClick={toggleMenu} className="hover:text-gray-400">
-								Admin
-							</Link>
 							<Link href="/products" onClick={toggleMenu} className="hover:text-gray-400">
 								Products
 							</Link>
+
+							<AdminLink handle={toggleMenu} />
+
+							<AuthLinkMobile toggleMenu={toggleMenu} />
 						</nav>
 					</div>
 				)}

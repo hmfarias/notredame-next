@@ -3,9 +3,7 @@
  * @param {number} rating - The rating value to be displayed.
  * @returns {JSX.Element} - The rendered rating stars.
  * @exports RatingStars
- * @description RatingStars is a component that displays a rating system with stars.
- * It takes a rating value as a prop and renders the appropriate number of filled stars based on the value.
-
+ * @description RatingStars is a component that displays a rating system with stars. It takes a rating value as a prop and renders the corresponding number of stars based on the value.
  */
 const RatingStars = ({ rating }) => {
 	// Asegurarse de que el rating esté entre 0 y 5

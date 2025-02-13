@@ -5,7 +5,7 @@
  * @requires getProductById
  * @requires PageTitle
  * @requires DetailList
- * @description The Product Detail Container
+ * @description The Product Detail Container component returns a product detail page
  */
 
 import PageTitle from './PageTitle';

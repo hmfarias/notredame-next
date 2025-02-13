@@ -43,12 +43,6 @@ export const GET = async (req) => {
 		const docRef = doc(productsCollection, id);
 		console.log('✅ ~ GET ~ docRef:', docRef);
 
-		// // Create a query to filter through the 'ID' field0
-		// const filter = query(productsCollection, where('id', '==', id));
-
-		// // Obtain documents that coincide with the filter
-		// const snapshot = await getDocs(filter);
-
 		const query = await getDoc(docRef);
 		console.log('✅ ~ GET ~ query:', query);
 		const product = query.data();

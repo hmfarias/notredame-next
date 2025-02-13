@@ -11,6 +11,7 @@
 
 import migrateCategories from '@/actions/migrateCategories';
 import migrateProducts from '@/actions/migrateProducts';
+import AnimatedTitle from '@/components/AnimatedTitle';
 import Button from '@/components/Button';
 import PageTitle from '@/components/PageTitle';
 import Image from 'next/image';
@@ -24,16 +25,14 @@ const HomePage = () => {
 			<PageTitle>Home</PageTitle>
 			<div className="mt-4 flex grow flex-col gap-4 md:flex-row">
 				<div className="flex flex-col justify-center items-center gap-2 md:gap-4rounded-lg bg-background md:w-2/5 md:px-5 text-center text-text md:leading-normal">
-					<h1 className="text-4xl font-bold leading-none sm:text-5xl">
-						Welcome to
-						<span className="text-accent"> NotreDame</span>!
-					</h1>
-
-					<p className="text-l md:text-2xl px-5">
-						An online multi-shop where you can find any product you need!
-					</p>
+					<AnimatedTitle
+						text="Welcome to "
+						textSecondary="NotreDame!"
+						textDescription="An online multi-shop where you can find any product you need!"
+					/>
+					{/* {' '} */}
 					<Link href="/products">
-						<Button className>Start -&gt;</Button>
+						<Button className=" text-white">Start -&gt;</Button>
 					</Link>
 				</div>
 				<div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">

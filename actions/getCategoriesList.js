@@ -2,7 +2,7 @@
  * @module actions/getCategoriesList
  * @returns {Object} {payload: Array, message: String, error: Boolean} - The categories list
  * @exports getCategoriesList
- * @description Fetches the categories list from the API
+ * @description Fetches the categories list from the API.
  */
 
 const getCategoriesList = async () => {

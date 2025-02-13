@@ -1,6 +1,8 @@
 /**
- * * PageTitle.js
- * Returns an h2 element with a title
+ * @module components/PageTitle.js
+ * @returns {JSX.Element} - the Page Title component
+ * @exports PageTitle
+ * @description The Page Title component returns an h2 element with a title
  */
 
 const PageTitle = ({ children = 'Titulo de pagina' }) => {

@@ -1,10 +1,11 @@
 /**
  * @module GetStockMessage
- * @description Is an internal component,
- * which returns a component showing the available stock of the product,
- * using conditional rendering and Tailwind's utility classes.
+ * @returns {JSX.Element} - the Get Stock Message component
+ * @exports GetStockMessage
+ * @description Is an internal component, which returns a component showing the available stock of the product, using conditional rendering and Tailwind's utility clas
  * @param {*} stock Is the amount of available stock of the product, which will be displayed with Conditional Rendering.
  */
+
 const GetStockMessage = ({ stock }) => {
 	const message =
 		stock === 0

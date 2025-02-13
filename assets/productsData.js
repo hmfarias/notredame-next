@@ -1,3 +1,20 @@
+/**
+ * @module assets/productsData.js
+ * @returns {Object} products - The products array
+ * @exports products
+ * @description This file contains the products array. It is used to populate the products colection in firestore database by the migrateProducts action.
+ * The products array is an array of objects, where each object represents a product with the following properties:
+ * id - The id of the product
+ * title - The title of the product
+ * description - The description of the product
+ * category - The category of the product
+ * price - The price of the product
+ * rating - The rating of the product
+ * stock - The stock of the product
+ * thumbnail - The thumbnail of the product
+ * There are also other properties that are not used in the application, but are included for demonstration purposes.
+ */
+
 export const products = [
 	{
 		id: 1,

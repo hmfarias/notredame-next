@@ -1,4 +1,14 @@
 'use client';
+/**
+ * @module components/AdminLink.js
+ * @returns {JSX.Element} - the Admin Link component
+ * @exports AdminLink
+ * @requires AuthContext
+ * @requires Link
+ * @requires useContext
+ * @description The Admin Link component returns a link to the admin panel page if the user is logged in
+ * @example
+ */
 
 import { AuthContext } from '@/providers/AuthProvider';
 import Link from 'next/link';

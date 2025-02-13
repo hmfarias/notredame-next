@@ -1,7 +1,6 @@
 /**
  * @module actions/migrateProducts
- * @description Migrate the products from the local array to the firebase database
- *
+ * @description Migrate the products from the local array to the firebase database. It sends a POST request to the '/api/products' endpoint with the products array as the request body. If the request is successful, the function returns the response from the API. If there is an error, it returns an error message. It must be executed just once. If the migration is already executed, it will not be performed again.
  */
 
 import { products } from '@/assets/productsData';

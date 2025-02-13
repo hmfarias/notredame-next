@@ -8,11 +8,9 @@
  * @description The Product Detail page
  */
 
-import Button from '@/components/Button';
 import LoadingSkeleton from '@/components/LoadingSkeleton';
 import PageTitle from '@/components/PageTitle';
 import ProductDetailContainer from '@/components/ProductDetailContainer';
-import Link from 'next/link';
 import { Suspense } from 'react';
 
 export const ProductDetailPage = async ({ params }) => {

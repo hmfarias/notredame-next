@@ -1,4 +1,15 @@
 'use client';
+/**
+ * @module app/login/page.js
+ * @returns {JSX.Element} JSX.Element - the Login page
+ * @exports LoginPage
+ * @requires AuthContext
+ * @requires useRouter
+ * @requires useContext
+ * @requires useEffect
+ * @requires useState
+ * @description The Login page
+ */
 
 import { AuthContext } from '@/providers/AuthProvider';
 import { useRouter } from 'next/navigation';

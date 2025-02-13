@@ -5,7 +5,7 @@
  * @requires getProducts
  * @requires PageTitle
  * @requires ProductList
- * @description The Product List Container
+ * @description The Product List Container component returns a product list page
  */
 
 import getProducts from '@/actions/getProducts';

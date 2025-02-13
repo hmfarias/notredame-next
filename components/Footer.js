@@ -1,6 +1,10 @@
 /**
- * * Footer.js
- * Return the footer component for the app
+ * @module components/Footer.js
+ * @returns {JSX.Element} - the Footer component
+ * @exports Footer
+ * @requires Image
+ * @requires SocialButton
+ * @description The Footer component returns the footer of the app
  */
 
 import { Instagram, Twitter, Youtube } from 'lucide-react';

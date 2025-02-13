@@ -5,7 +5,7 @@
  * @requires getProductById
  * @requires PageTitle
  * @requires DetailList
- * @description The Product Detail
+ * @description The Product Detail component returns a product detail page
  */
 
 'use client';

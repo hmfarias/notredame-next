@@ -1,4 +1,12 @@
 'use client';
+/**
+ * @module components/CategoryLink.js
+ * @returns {JSX.Element} - the Category Link component
+ * @exports CategoryLink
+ * @requires Link
+ * @description The Category Link component returns a link to the product page of a category
+ *
+ */
 import Link from 'next/link';
 
 const CategoryLink = ({ category, asOption }) => {
@@ -12,24 +20,3 @@ const CategoryLink = ({ category, asOption }) => {
 };
 
 export default CategoryLink;
-
-// 'use client';
-// import Link from 'next/link';
-
-// const CategoryLink = ({ category, pathname }) => {
-// 	const categoryPath = `/products/${category.slug}`;
-
-// 	return (
-// 		<Link
-// 			key={category.slug}
-// 			href={categoryPath}
-// 			className={`hover:text-gray-500 pl-2${
-// 				pathname === categoryPath ? 'font-bold bg-accent/30 rounded-md px-2 py-1' : ''
-// 			}`}
-// 		>
-// 			{category.name}
-// 		</Link>
-// 	);
-// };
-
-// export default CategoryLink;

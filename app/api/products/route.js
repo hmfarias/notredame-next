@@ -85,7 +85,7 @@ export const POST = async (req) => {
 
 		return NextResponse.json(
 			{
-				message: 'Product created',
+				message: 'Successfully created product',
 				error: false,
 				payload: { id: productRef.id, ...product },
 			},

@@ -1,6 +1,11 @@
 /**
- * * ProductList.js
- * Returns a responsive list of products rendered in a grid layout in cards format.
+ * @module components/ProductList.js
+ * @returns {JSX.Element} - the Product List component
+ * @exports ProductList
+ * @requires MoveUpRight
+ * @requires Image
+ * @requires Link
+ * @description The Product List component returns a responsive list of products rendered in a grid layout in cards format.
  */
 
 'use client';

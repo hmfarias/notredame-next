@@ -1,3 +1,12 @@
+/**
+ * @module components/LoadingSkeleton.js
+ * @returns {JSX.Element} - the Loading Skeleton component
+ * @exports LoadingSkeleton
+ * @requires Skeleton
+ * @requires skeleton.css
+ * @description The Loading Skeleton component returns a skeleton of cards loading
+ */
+
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 /**

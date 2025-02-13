@@ -1,13 +1,10 @@
 /**
  * @module utils/toasts.js
- * @description This file contains the functions to show toasts
  * @exports showSuccessToast
  * @exports showWarningToast
  * @exports showErrorToast
  * @requires toast
- * @description This file contains the functions to show toasts
- * The toasts are used to show notifications to the user
- * The toasts are configured in the toastify library
+ * @description This file contains the functions to show toasts. The toasts are used to show notifications to the user. The toasts are configured in the toastify library.
  */
 
 import { toast } from 'react-toastify';

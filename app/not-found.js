@@ -6,7 +6,7 @@
  * @requires Image
  * @requires Link
  * @description
- * This module exports the NotFoundPage component. It is a functional component that displays a 404 Not Found page with a Home Page button link
+ * This module exports the NotFoundPage component. It is a component that displays a 404 Not Found page with a Home Page button link
  */
 
 import Button from '@/components/Button';
