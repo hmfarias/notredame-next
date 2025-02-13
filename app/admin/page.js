@@ -50,15 +50,22 @@ const AdminPage = () => {
 		const name = e.target.name; // name of the input field
 		const value = e.target.value; // value of the input field
 
-		methods[name](value); // methods[name](value) = setName(value) and methods[price](value) = setPrice(value) -> This is like you write "setName(value)" beautiful trick right?
+		methods[name](value); //Update the corresponding state -> methods[name](value) = setName(value) and methods[price](value) = setPrice(value) -> This is like you write "setName(value)" beautiful trick right?
 	};
 
-	// Get list of categories when mounting the component
+	// Get list of categories when mounting the component and sort them alphabetically for use in the input field
 	useEffect(() => {
 		const fetchCategories = async () => {
 			const { payload, error } = await getCategoriesList();
+
 			if (!error) {
-				setCategories(payload);
+				// Order the categories alphabetically by name
+				const sortedCategories = payload.sort((a, b) => {
+					if (a.name < b.name) return -1;
+					if (a.name > b.name) return 1;
+					return 0;
+				});
+				setCategories(sortedCategories);
 			} else {
 				console.error('Error fetching categories:', error);
 			}
@@ -69,7 +76,7 @@ const AdminPage = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		// Validaciones
+		// Validations
 		if (!title.trim()) {
 			showWarningToast('Please enter a title for the product');
 			return;
@@ -91,14 +98,23 @@ const AdminPage = () => {
 			title,
 			description,
 			category,
-			price: parseFloat(price), // Convertir a número
-			rating: rating ? parseFloat(rating) : 4, // Si rating está vacío, asigna 4
-			stock,
+			price: parseFloat(price), // Convert to number
+			rating: rating ? parseFloat(rating) : 4, // If rating is empty, assign 4
+			stock: parseInt(stock, 10), // Convert to number
 			thumbnail: thumbnail.trim()
 				? thumbnail
-				: 'https://pixabay.com/es/photos/bottle-care-recorte-commercial-4865366/', // Valor por defecto
+				: 'https://pixabay.com/es/photos/bottle-care-recorte-commercial-4865366/', // Default value
 		};
+		// Reset the form fields after submitting
+		setTitle('');
+		setDescription('');
+		setCategory('');
+		setPrice('');
+		setRating('');
+		setStock('');
+		setThumbnail('');
 
+		//
 		createNewProduct(newProduct);
 	};
 
@@ -122,6 +138,7 @@ const AdminPage = () => {
 								type="text"
 								placeholder='eg: Laptop lenovo 15"'
 								className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 border-primary/70 border bg-primary/10 p-2"
+								value={title}
 								onChange={handleChange}
 							/>
 						</div>
@@ -135,6 +152,7 @@ const AdminPage = () => {
 								rows="4"
 								placeholder="Enter product description..."
 								className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 border-primary/70 border bg-primary/10 p-2 resize-none"
+								value={description}
 								onChange={handleChange}
 							/>
 						</div>
@@ -146,11 +164,12 @@ const AdminPage = () => {
 								name="category"
 								id="category"
 								className="w-full rounded-md border-primary/70 border bg-primary/10 p-2 focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600"
+								value={category}
 								onChange={handleChange}
 							>
 								<option value="">Select a category</option>
 								{categories.map((cat) => (
-									<option key={cat.id} value={cat.slug}>
+									<option key={cat.slug} value={cat.slug}>
 										{cat.name}
 									</option>
 								))}
@@ -177,6 +196,25 @@ const AdminPage = () => {
 								}}
 							/>
 						</div>
+						<div className="col-span-full md:col-span-2">
+							<label htmlFor="stock" className="text-sm">
+								Stock
+							</label>
+							<input
+								name="stock"
+								id="stock"
+								type="text"
+								placeholder="10"
+								className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 border-primary/70 border bg-primary/10 p-2"
+								value={stock !== undefined && stock !== null ? `units ${stock}` : ''} // Muestra el valor seguido de "units"
+								onChange={(e) => {
+									let value = e.target.value.replace(/[^0-9]/g, ''); // Allows only numbers
+									value = value.replace(/^0+(?=\d)/, ''); // Eliminate initial zeros
+									e.target.value = value; // Update the value in the text field
+									handleChange(e); // Call the original function
+								}}
+							/>
+						</div>
 						<div className="col-span-full">
 							<label htmlFor="thumbnail" className="text-sm">
 								Product Thumbnail (URL)
@@ -187,6 +225,7 @@ const AdminPage = () => {
 								type="url"
 								placeholder="Enter image URL"
 								className="w-full rounded-md border-primary/70 border bg-primary/10 p-2 focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600"
+								value={thumbnail}
 								onChange={handleChange}
 							/>
 						</div>

@@ -1,11 +1,28 @@
-// This is the layout for the products page. It fetches the categories from the api and displays them in a list.
 'use client';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import PageTitle from '@/components/PageTitle';
-import Link from 'next/link';
+import CategoryLink from './CategoryLink';
 
 const ProductLayoutClient = ({ categories, children }) => {
-	const pathname = usePathname(); // Get the current path
+	const pathname = usePathname(); // Get the current route
+	const router = useRouter(); // Hook to navigate programmatically
+
+	// Order the categories alphabetically by name
+	const sortedCategories = categories.sort((a, b) => {
+		if (a.name < b.name) return -1;
+		if (a.name > b.name) return 1;
+		return 0;
+	});
+
+	// Handle to redirect the user when selecting a category
+	const handleCategoryChange = (e) => {
+		const selectedSlug = e.target.value;
+		if (selectedSlug === 'all') {
+			router.push('/products'); // redirect "All products"
+		} else {
+			router.push(`/products/${selectedSlug}`); // Redirect to the selected category
+		}
+	};
 
 	return (
 		<div className="flex flex-col md:flex-row gap-8">
@@ -13,35 +30,29 @@ const ProductLayoutClient = ({ categories, children }) => {
 				<PageTitle>Filters</PageTitle>
 				<div className="flex flex-col md:leading-7 bg-secondary p-2 rounded-md">
 					<p className="font-bold text-xl">Category</p>
-					<Link
-						href="/products"
-						className={`hover:text-gray-500 pl-2${
-							pathname === '/products'
-								? 'font-bold bg-accent/30 rounded-md px-2 py-1'
-								: ''
-						}`}
+
+					{/* Dropdown list*/}
+					<select
+						className="w-full p-2 rounded-md bg-white border border-gray-300 focus:outline-none focus:border-accent"
+						onChange={handleCategoryChange} // Handles selection change
+						value={pathname.split('/').pop() || 'all'} // Fix the value for the input according to the current route
 					>
-						All Products
-					</Link>
-					{/* There are too many categories, I only bring 7 */}
-					{categories.slice(0, 7).map((category) => {
-						const categoryPath = `/products/${category.slug}`;
-						return (
-							<Link
+						{/* Option for "All Products"*/}
+						<option value="all">All Products</option>
+
+						{/* Render the categories using categorylink */}
+						{sortedCategories.map((category) => (
+							<CategoryLink
 								key={category.slug}
-								href={categoryPath}
-								className={`hover:text-gray-500 pl-2${
-									pathname === categoryPath
-										? 'font-bold bg-accent/30 rounded-md px-2 py-1'
-										: ''
-								}`}
-							>
-								{category.name}
-							</Link>
-						);
-					})}
+								category={category}
+								asOption // Indicates that it must be rendered as an option
+							/>
+						))}
+					</select>
 				</div>
 			</aside>
+
+			{/* Contenido principal */}
 			<div className="grow">{children}</div>
 		</div>
 	);

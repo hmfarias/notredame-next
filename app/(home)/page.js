@@ -26,7 +26,7 @@ const HomePage = () => {
 				<div className="flex flex-col justify-center items-center gap-2 md:gap-4rounded-lg bg-background md:w-2/5 md:px-5 text-center text-text md:leading-normal">
 					<h1 className="text-4xl font-bold leading-none sm:text-5xl">
 						Welcome to
-						<span className="dark:text-violet-600"> NotreDame</span>!
+						<span className="text-accent"> NotreDame</span>!
 					</h1>
 
 					<p className="text-l md:text-2xl px-5">
