@@ -20,7 +20,9 @@ const ProductList = ({ products }) => {
 						{/* Image at the top card */}
 						<div className="relative flex-grow">
 							<Image
-								src={product.thumbnail}
+								src={
+									product.thumbnail?.trim() ? product.thumbnail : '/defect-product.png'
+								}
 								alt={`Thumbnail of ${product.title}`}
 								fill
 								sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

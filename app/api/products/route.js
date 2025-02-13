@@ -10,23 +10,27 @@
  */
 
 import { db } from '@/firebase';
-import { collection, getDocs, where, query } from 'firebase/firestore';
+import { collection, getDocs, where, query, addDoc } from 'firebase/firestore';
 import { NextResponse } from 'next/server';
 
 // Route Handlers
 
+//*************************************************
+// GET all products from the database (server-side)
+// If a category is provided, it fetches the products by category else it fetches all products
+//************************************************/
 export const GET = async (req) => {
-	const searchParams = req.nextUrl.searchParams;
-	const category = searchParams.get('category');
-
-	// to simulate a delay in the response
-	// await new Promise((resolve) => setTimeout(resolve, 3000));
-
-	//bring the collection from firebase
-	const productsCollection = collection(db, 'products');
-
 	try {
-		// filter in case a category is received
+		const searchParams = req.nextUrl.searchParams;
+		const category = searchParams.get('category');
+
+		// to simulate a delay in the response
+		// await new Promise((resolve) => setTimeout(resolve, 3000));
+
+		//reference to the collection in firebase
+		const productsCollection = collection(db, 'products');
+
+		// prepare the filter in case a category is received
 		const filter = query(productsCollection, where('category', '==', category));
 
 		//bring the products of the collection by applying the filter (if no ‘category’ is received the filter will bring all products).
@@ -38,31 +42,64 @@ export const GET = async (req) => {
 			const idFirebase = documenRef.id; //the firebase id
 			const productData = documenRef.data(); //the data corresponding to the firebase id {id, description, category, .... etc}
 			// replace the original id from dumyJson for the firebase id
-			// productData.id = idFirebase;
+			productData.id = idFirebase;
 
 			return productData;
 		});
 
-		return NextResponse.json({
-			message: 'Products fetched',
-			error: false,
-			payload: products,
-		});
+		return NextResponse.json(
+			{
+				message: 'Products fetched successfully',
+				error: false,
+				payload: products,
+			},
+			{ status: 200 } // 200 OK
+		);
 	} catch (error) {
-		return NextResponse.json({
-			message: 'Error fetching products',
-			error: true,
-			payload: null,
-		});
+		console.error('Error fetching products:', error);
+		return NextResponse.json(
+			{
+				message: 'Error fetching products',
+				error: true,
+				payload: null,
+			},
+			{ status: 500 }
+		); // 500 Internal Server Error
 	}
 };
 
+//*************************************************
+// POST a new product to the database (server-side)
+//************************************************/
+
 export const POST = async (req) => {
-	console.log('POST method');
+	try {
+		// Get the body of the petition
+		const product = await req.json();
 
-	// this is how you can get the body of the request
-	// fetch("url", {body: JSON.stringify({key: "value"})})
-	console.log(await req.json());
+		// Reference to the collection in Firestore
+		const productsCollection = collection(db, 'products');
 
-	return NextResponse.json({ message: 'POST method' });
+		// Add the document to Firestore
+		const productRef = await addDoc(productsCollection, { ...product });
+
+		return NextResponse.json(
+			{
+				message: 'Product created',
+				error: false,
+				payload: { id: productRef.id, ...product },
+			},
+			{ status: 201 } // 201 Created
+		);
+	} catch (error) {
+		console.error('Error creating the product:', error);
+		return NextResponse.json(
+			{
+				message: 'Error creating the product',
+				error: true,
+				payload: null,
+			},
+			{ status: 500 }
+		); // 500 Internal Server Error
+	}
 };

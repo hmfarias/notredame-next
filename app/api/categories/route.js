@@ -14,6 +14,9 @@ import { NextResponse } from 'next/server';
 
 // Route Handlers
 
+//*************************************************
+// GET all categories from the database (server-side)
+//************************************************/
 export const GET = async () => {
 	//bring the collection from firebase
 	const categoriesCollection = collection(db, 'categories');
@@ -29,16 +32,23 @@ export const GET = async () => {
 			return productData;
 		});
 
-		return NextResponse.json({
-			message: 'Categories fetched',
-			error: false,
-			payload: categories,
-		});
+		return NextResponse.json(
+			{
+				message: 'Categories fetched successfully',
+				error: false,
+				payload: categories,
+			},
+			{ status: 200 } // 200 OK
+		);
 	} catch (error) {
-		return NextResponse.json({
-			message: 'Error fetching categories',
-			error: true,
-			payload: null,
-		});
+		console.error('Error fetching categories:', error);
+		return NextResponse.json(
+			{
+				message: 'Error fetching categories',
+				error: true,
+				payload: null,
+			},
+			{ status: 500 }
+		); // 500 Internal Server Error
 	}
 };

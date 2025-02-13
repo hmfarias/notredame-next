@@ -101,9 +101,7 @@ const AdminPage = () => {
 			price: parseFloat(price), // Convert to number
 			rating: rating ? parseFloat(rating) : 4, // If rating is empty, assign 4
 			stock: parseInt(stock, 10), // Convert to number
-			thumbnail: thumbnail.trim()
-				? thumbnail
-				: 'https://pixabay.com/es/photos/bottle-care-recorte-commercial-4865366/', // Default value
+			thumbnail: thumbnail,
 		};
 		// Reset the form fields after submitting
 		setTitle('');

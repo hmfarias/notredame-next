@@ -10,66 +10,79 @@
  */
 
 import { db } from '@/firebase';
-import { collection, getDocs, where, query } from 'firebase/firestore';
+import { collection, doc, getDoc } from 'firebase/firestore';
 import { NextResponse } from 'next/server';
 
 // Route Handlers
-
+//*************************************************
+// GET one product BY ID from the database (server-side)
+//************************************************/
 export const GET = async (req) => {
 	try {
 		// Get the 'ID' search parameter from the URL
 		const searchParams = req.nextUrl.searchParams;
-		const id = Number(searchParams.get('id')); // id is a number in firebase
+		const id = searchParams.get('id');
+		// const id = await params;
+		console.log('✅ ~ GET ~ id:', id);
+
 		if (!id) {
-			return NextResponse.json({
-				message: 'ID is required',
-				error: true,
-				payload: null,
-			});
+			return NextResponse.json(
+				{
+					message: 'ID is required',
+					error: true,
+					payload: null,
+				},
+				{ status: 400 } // 400 Bad Request
+			);
 		}
 
 		// Reference to the 'Products' collection in Firestore
 		const productsCollection = collection(db, 'products');
 
-		// Create a query to filter through the 'ID' field0
-		const filter = query(productsCollection, where('id', '==', id));
+		// Get the document reference
+		const docRef = doc(productsCollection, id);
+		console.log('✅ ~ GET ~ docRef:', docRef);
 
-		// Obtain documents that coincide with the filter
-		const snapshot = await getDocs(filter);
+		// // Create a query to filter through the 'ID' field0
+		// const filter = query(productsCollection, where('id', '==', id));
+
+		// // Obtain documents that coincide with the filter
+		// const snapshot = await getDocs(filter);
+
+		const query = await getDoc(docRef);
+		console.log('✅ ~ GET ~ query:', query);
+		const product = query.data();
+		product.id = id;
 
 		//Verify if there are documents in the result
-		if (snapshot.empty) {
-			return NextResponse.json({
-				message: 'Product not found',
-				error: true,
-				payload: null,
-			});
+		if (query.empty) {
+			return NextResponse.json(
+				{
+					message: 'Product not found',
+					error: true,
+					payload: null,
+				},
+				{ status: 404 } // 404 Not Found
+			);
 		}
 
-		//snapshot returns: {docs: [all documents here], size: 0, empty: true/false ...}
-		//in this case, we only have one document, so we can access it directly
-		const product = snapshot.docs[0].data();
-
-		return NextResponse.json({
-			message: 'Product fetched',
-			error: false,
-			payload: product,
-		});
+		return NextResponse.json(
+			{
+				message: 'Product fetched',
+				error: false,
+				payload: product,
+			},
+			{ status: 200 } // 200 OK
+		);
 	} catch (error) {
-		return NextResponse.json({
-			message: 'Error fetching the product',
-			error: true,
-			payload: null,
-		});
+		console.error('Error fetching the product:', error);
+		return NextResponse.json(
+			{
+				message: 'Error fetching the product',
+				error: true,
+				payload: null,
+			},
+			{ status: 500 } // 500 Internal Server Error
+		);
 	}
-};
-
-export const POST = async (req) => {
-	console.log('POST method');
-
-	// this is how you can get the body of the request
-	// fetch("url", {body: JSON.stringify({key: "value"})})
-	console.log(await req.json());
-
-	return NextResponse.json({ message: 'POST method' });
 };

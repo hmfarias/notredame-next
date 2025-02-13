@@ -11,7 +11,6 @@
 'use client';
 import { Truck } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import Button from './Button';
 import GetStockMessage from './GetStockMessage';
 import RatingStars from './RatingStars';
@@ -74,7 +73,7 @@ const ProductDetail = ({ product }) => {
 				<Image
 					className="rounded-md w-full h-full object-cover"
 					alt="product image"
-					src={product.thumbnail}
+					src={product.thumbnail?.trim() ? product.thumbnail : '/defect-product.png'}
 					width={500}
 					height={500}
 				/>

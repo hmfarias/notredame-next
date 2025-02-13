@@ -8,9 +8,7 @@
 
 const getProductById = async (id) => {
 	try {
-		const endpointApiNext = `http://localhost:3000/api/product?id=${id}`;
-
-		const endpoint = endpointApiNext;
+		const endpoint = `http://localhost:3000/api/product?id=${id}`;
 
 		const data = await fetch(endpoint);
 		const { payload: product } = await data.json();

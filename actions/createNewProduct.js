@@ -1,5 +1,4 @@
 const createNewProduct = async (product) => {
-	console.log('✅ ~ createNewProduct ~ product:', product);
 	const endpoint = 'http://localhost:3000/api/products';
 
 	try {
