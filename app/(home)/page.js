@@ -11,6 +11,7 @@
 
 import migrateCategories from '@/actions/migrateCategories';
 import migrateProducts from '@/actions/migrateProducts';
+import AnimatedImg from '@/components/AnimatedImg';
 import AnimatedTitle from '@/components/AnimatedTitle';
 import Button from '@/components/Button';
 import PageTitle from '@/components/PageTitle';
@@ -35,22 +36,7 @@ const HomePage = () => {
 						<Button className=" text-white">Start -&gt;</Button>
 					</Link>
 				</div>
-				<div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
-					<Image
-						src="/hero-desktop.png"
-						alt="Screenshots of the dashboard"
-						width={1000}
-						height={760}
-						className="hidden md:block"
-					/>
-					<Image
-						src="/hero-mobile.png"
-						alt="Screenshots of the dashboard"
-						width={560}
-						height={620}
-						className="block md:hidden"
-					/>
-				</div>
+				<AnimatedImg />
 			</div>
 		</>
 	);
