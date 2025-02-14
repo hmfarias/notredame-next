@@ -45,12 +45,12 @@ const LoginPage = () => {
 	};
 
 	return (
-		<section className="grow grid place-content-center">
-			<div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800">
+		<section className="grow grid place-items-center">
+			<div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-accent/50 text-text mt-10">
 				<h1 className="text-2xl font-bold text-center">Login</h1>
 				<form noValidate="" action="" className="space-y-6" onSubmit={handleSubmit}>
 					<div className="space-y-1 text-sm">
-						<label htmlFor="email" className="block text-gray-400 dark:text-gray-600">
+						<label htmlFor="email" className="block text-text ">
 							Email
 						</label>
 						<input
@@ -58,12 +58,12 @@ const LoginPage = () => {
 							name="email"
 							id="email"
 							placeholder="Email"
-							className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-violet-400 focus:dark:border-violet-600"
+							className="w-full px-4 py-3 rounded-md border-accent bg-background text-text  focus:border-accent "
 							onChange={handleChange}
 						/>
 					</div>
 					<div className="space-y-1 text-sm">
-						<label htmlFor="password" className="block text-gray-400 dark:text-gray-600">
+						<label htmlFor="password" className="block text-text">
 							Password
 						</label>
 						<input
@@ -71,7 +71,7 @@ const LoginPage = () => {
 							name="password"
 							id="password"
 							placeholder="Password"
-							className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-violet-400 focus:dark:border-violet-600"
+							className="w-full px-4 py-3 rounded-md border-accent bg-background text-text  focus:border-accent"
 							onChange={handleChange}
 						/>
 					</div>
