@@ -27,7 +27,7 @@ const AnimatedTitle = (props) => {
 				className="text-4xl font-bold leading-none sm:text-5xl select-none"
 			>
 				{props.text}
-				<span className="text-secondary">{props.textSecondary}</span>
+				<span className="text-accent">{props.textSecondary}</span>
 			</motion.h1>
 			<motion.p
 				initial={{ y: -100, opacity: 0 }}

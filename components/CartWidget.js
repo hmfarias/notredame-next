@@ -23,7 +23,10 @@ const CartWidget = () => {
 	const totalItemsCart = cartState.reduce((sum, item) => sum + item.qtyItem, 0);
 
 	return (
-		<Link href="/cart" className="hover:text-gray-400 flex items-center space-x-6 text-l">
+		<Link
+			href="/cart"
+			className="text-text hover:text-secondary flex items-center space-x-6 text-l"
+		>
 			<ShoppingCartIcon className="mr-1 w-5 h-5" />
 			<span className="text-l">{totalItemsCart}</span>
 		</Link>

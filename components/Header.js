@@ -26,15 +26,14 @@ import CartWidget from './CartWidget';
 import AuthLink from './AuthLink';
 import AdminLink from './AdminLink';
 import AuthLinkMobile from './AuthLinkMobile';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const { cartState } = useContext(CartContext);
-	console.log('5️⃣ cartState in header:', cartState);
 
 	const toggleMenu = () => {
 		setMenuOpen((prev) => !prev);
-		// Aquí puedes agregar lógica para mostrar u ocultar el menú
 	};
 	return (
 		<header className="flex items-center justify-between p-4 bg-primary">
@@ -56,10 +55,10 @@ const Header = () => {
 
 				{/* Navbar */}
 				<nav className="hidden md:flex space-x-4">
-					<Link href="/" className="hover:text-gray-400">
+					<Link href="/" className="text-text hover:text-secondary">
 						Home
 					</Link>
-					<Link href="/products" className="hover:text-gray-400 text-center">
+					<Link href="/products" className="text-text hover:text-secondary text-center">
 						Products
 					</Link>
 
@@ -70,28 +69,49 @@ const Header = () => {
 				<div className="md:hidden">
 					<button onClick={toggleMenu} className="focus:outline-none flex items-center">
 						{menuOpen ? (
-							<X className="w-6 h-6 text-white" />
+							<X className="w-6 h-6 text-text hover:text-secondary" />
 						) : (
-							<Menu className="w-5 h-5 text-white" />
+							<Menu className="w-5 h-5 text-text hover:text-secondary" />
 						)}
 					</button>
 				</div>
-				{menuOpen && (
-					<div className="absolute top-16 left-0 w-full bg-gray-800 text-white md:hidden">
-						<nav className="flex flex-col space-y-2 p-4">
-							<Link href="/" onClick={toggleMenu} className="hover:text-gray-400">
-								Home
-							</Link>
-							<Link href="/products" onClick={toggleMenu} className="hover:text-gray-400">
-								Products
-							</Link>
+				<AnimatePresence>
+					{menuOpen && (
+						<motion.div
+							initial={{ height: 0 }}
+							animate={{ height: 'auto' }}
+							exit={{ height: 0 }}
+							transition={{ duration: 0.3, ease: 'easeInOut' }}
+							className="absolute top-16 left-0 w-full bg-primary/70 backdrop-blur-lg text-white md:hidden px-2"
+						>
+							<motion.nav
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1, transition: { delay: 0.2 } }} // Delays the appearance of the text
+								exit={{ opacity: 0, transition: { duration: 0.15 } }} // Disappears before the rise menu
+								className="flex flex-col space-y-2 p-4"
+							>
+								<Link
+									href="/"
+									onClick={toggleMenu}
+									className="text-text hover:text-secondary"
+								>
+									Home
+								</Link>
+								<Link
+									href="/products"
+									onClick={toggleMenu}
+									className="text-text hover:text-secondary"
+								>
+									Products
+								</Link>
 
-							<AdminLink handle={toggleMenu} />
+								<AdminLink handle={toggleMenu} />
 
-							<AuthLinkMobile toggleMenu={toggleMenu} />
-						</nav>
-					</div>
-				)}
+								<AuthLinkMobile toggleMenu={toggleMenu} />
+							</motion.nav>
+						</motion.div>
+					)}
+				</AnimatePresence>
 			</div>
 		</header>
 	);

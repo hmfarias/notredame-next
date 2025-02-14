@@ -15,12 +15,11 @@ import AnimatedImg from '@/components/AnimatedImg';
 import AnimatedTitle from '@/components/AnimatedTitle';
 import Button from '@/components/Button';
 import PageTitle from '@/components/PageTitle';
-import Image from 'next/image';
 import Link from 'next/link';
 
 const HomePage = () => {
-	migrateProducts(); //used just one time to add the products to firebase
-	migrateCategories(); //used just one time to add the categories to firebase
+	migrateProducts(); //used just one time to populate the products collection in firestore
+	migrateCategories(); //used just one time to populate the categories collection in firestore
 	return (
 		<>
 			<PageTitle>Home</PageTitle>
@@ -31,7 +30,6 @@ const HomePage = () => {
 						textSecondary="NotreDame!"
 						textDescription="An online multi-shop where you can find any product you need!"
 					/>
-					{/* {' '} */}
 					<Link href="/products">
 						<Button className=" text-white">Start -&gt;</Button>
 					</Link>

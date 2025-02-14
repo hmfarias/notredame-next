@@ -65,7 +65,7 @@ export const AuthContextProvider = (props) => {
 		try {
 			const userCredential = await signInWithEmailAndPassword(auth, email, password);
 			const user = userCredential.user;
-			showSuccessToast(`Welcome back, ${user.email}!`, 700);
+			showSuccessToast(`Welcome back, ${user.email}!`, 1300);
 		} catch (error) {
 			let errorMessage;
 			switch (error.code) {
@@ -92,7 +92,7 @@ export const AuthContextProvider = (props) => {
 	const handleLogout = async () => {
 		console.log('logout');
 		await signOut(auth);
-		showSuccessToast(`User desconnected.`, 700);
+		showSuccessToast(`User desconnected.`);
 	};
 
 	return (

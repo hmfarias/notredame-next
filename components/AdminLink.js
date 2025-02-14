@@ -20,7 +20,7 @@ function AdminLink({ handle }) {
 	if (!logedIn) return null;
 
 	return (
-		<Link href="/admin" onClick={handle}>
+		<Link href="/admin" onClick={handle} className="text-text hover:text-secondary">
 			Admin
 		</Link>
 	);

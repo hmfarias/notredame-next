@@ -36,7 +36,7 @@ const AuthLinkMobile = ({ toggleMenu }) => {
 		<Link
 			onClick={handleClick}
 			type="button"
-			className="focus:outline-none cursor-pointer hover:text-gray-400  "
+			className="focus:outline-none cursor-pointer text-text hover:text-secondary  "
 			href="/admin"
 			title={logedIn ? 'Close session' : 'Login user'}
 		>
