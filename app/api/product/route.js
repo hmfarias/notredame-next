@@ -1,14 +1,3 @@
-/**
- * @module app/api/product/route.js
- * @description This is the API route for a product
- * Implement the following routes:
- * @route GET /api/product
- * @description Fetches one product from the API.
- * @route POST /api/product
- * @param {*} req
- * @returns {Object} NextResponse
- */
-
 import { db } from '@/firebase';
 import { collection, doc, getDoc } from 'firebase/firestore';
 import { NextResponse } from 'next/server';
@@ -22,8 +11,6 @@ export const GET = async (req) => {
 		// Get the 'ID' search parameter from the URL
 		const searchParams = req.nextUrl.searchParams;
 		const id = searchParams.get('id');
-		// const id = await params;
-		console.log('✅ ~ GET ~ id:', id);
 
 		if (!id) {
 			return NextResponse.json(
@@ -41,10 +28,7 @@ export const GET = async (req) => {
 
 		// Get the document reference
 		const docRef = doc(productsCollection, id);
-		console.log('✅ ~ GET ~ docRef:', docRef);
-
 		const query = await getDoc(docRef);
-		console.log('✅ ~ GET ~ query:', query);
 		const product = query.data();
 		product.id = id;
 

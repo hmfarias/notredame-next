@@ -1,18 +1,17 @@
+import LoadingSkeleton from '@/components/LoadingSkeleton';
+import PageTitle from '@/components/PageTitle';
+import ProductListContainer from '@/components/ProductListContainer';
+import { Suspense } from 'react';
+
 /**
+ * @description Returns the Products page
  * @module app/products/page.js
  * @returns {JSX.Element} JSX.Element - the Products page
  * @exports ProductsPage
  * @requires PageTitle
  * @requires ProductListContainer
  * @requires Suspense
- * @description The Products page
  */
-
-import LoadingSkeleton from '@/components/LoadingSkeleton';
-import PageTitle from '@/components/PageTitle';
-import ProductListContainer from '@/components/ProductListContainer';
-import { Suspense } from 'react';
-
 const ProductsPage = async () => {
 	return (
 		<>

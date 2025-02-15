@@ -1,16 +1,16 @@
 'use client';
+
+import { motion } from 'motion/react';
+import Image from 'next/image';
+
 /**
+ * @description The Animated Image component returns a component that animates an image on the page
  * @module components/AnimatedImg.js
  * @returns {JSX.Element} - the Animated Image component
  * @exports AnimatedImg
  * @requires motion
  * @requires Image
- * @description The Animated Image component returns a component that animates an image on the page
  */
-
-import { motion } from 'motion/react';
-import Image from 'next/image';
-
 const AnimatedImg = (props) => {
 	return (
 		<>

@@ -1,5 +1,11 @@
 'use client';
+
+import { usePathname, useRouter } from 'next/navigation';
+import PageTitle from '@/components/PageTitle';
+import CategoryLink from './CategoryLink';
+
 /**
+ * @description The Product Layout Client component returns a layout for the product page. It includes a sidebar with a dropdown list to select the category and the main content.
  * @module components/ProductLayoutClient.js
  * @returns {JSX.Element} - the Product Layout Client component
  * @exports ProductLayoutClient
@@ -7,13 +13,7 @@
  * @requires useRouter
  * @requires PageTitle
  * @requires CategoryLink
- * @description The Product Layout Client component returns a product layout for the client side
  */
-
-import { usePathname, useRouter } from 'next/navigation';
-import PageTitle from '@/components/PageTitle';
-import CategoryLink from './CategoryLink';
-
 const ProductLayoutClient = ({ categories, children }) => {
 	const pathname = usePathname(); // Get the current route
 	const router = useRouter(); // Hook to navigate programmatically

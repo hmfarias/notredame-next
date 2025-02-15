@@ -1,15 +1,3 @@
-/**
- * @module app/layout.js
- * @returns {JSX.Element} the main layout of the application
- * @exports RootLayout
- * @requires Header
- * @requires Footer
- * @description
- * The RootLayout component is the main layout of the application. It includes the Header and Footer components.
- * The Header component includes the site title and navigation menu.
- * The Footer component includes the site's footer content.
- */
-
 import './globals.css';
 
 import Header from '@/components/Header';
@@ -26,6 +14,17 @@ export const metadata = {
 		'ecommerce, polirubro, application, nextjs, tailwind, sass, react, lucide, tailwindcss, Marcelo Farias, programmer, argentina, ecommerce',
 };
 
+/**
+ * @description
+ * The RootLayout component is the main layout of the application. It includes the Header and Footer components.
+ * The Header component includes the site title and navigation menu.
+ * The Footer component includes the site's footer content.
+ * @module app/layout.js
+ * @returns {JSX.Element} the main layout of the application
+ * @exports RootLayout
+ * @requires Header
+ * @requires Footer
+ */
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">

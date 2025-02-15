@@ -1,16 +1,15 @@
-/**
- * @module app/products/[cat]/page.js
- * @returns {JSX.Element} JSX.Element - the Products by Category page
- * @param {Object} params - The route parameters
- * @param {string} params.cat - The category name
- * @description The Products by Category page
- */
-
 import LoadingSkeleton from '@/components/LoadingSkeleton';
 import PageTitle from '@/components/PageTitle';
 import ProductListContainer from '@/components/ProductListContainer';
 import { Suspense } from 'react';
 
+/**
+ * @description Returns the Products by Category page
+ * @module app/products/[cat]/page.js
+ * @returns {JSX.Element} JSX.Element - the Products by Category page
+ * @param {Object} params - The route parameters
+ * @param {string} params.cat - The category name
+ */
 const ProductsByCategoryPage = async ({ params }) => {
 	const { cat } = await params;
 

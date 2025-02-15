@@ -1,14 +1,12 @@
-/**
- * @module actions/migrateCategories
- * @returns {Object} {payload: Array, message: String, error: Boolean} - categories from the API depending if recieves a category parameter
- * @exports migrateCategories
- * @description Migrate the categories from the local array to the firebase database. It sends a POST request to the '/api/categories' endpoint with the categories array as the request body. If the request is successful, the function returns the response from the API. If there is an error, it returns an error message. It must be executed just once. If the migration is already executed, it will not be performed again.
- */
-
 import { categories } from '@/assets/categoriesData';
 import { db } from '@/firebase';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 
+/**
+ * @description Migrate the categories from the local array to the firebase database. It sends a POST request to the '/api/categories' endpoint with the categories array as the request body. If the request is successful, the function returns the response from the API. If there is an error, it returns an error message. It must be executed just once. If the migration is already executed, it will not be performed again.
+ * @module actions/migrateCategories
+ * @exports migrateCategories
+ */
 const migrateCategories = async () => {
 	try {
 		// Steps:

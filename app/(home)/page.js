@@ -1,14 +1,3 @@
-/**
- * @module app/(home)/page.js
- * @returns {JSX.Element} JSX.Element - the Home Page
- * @exports HomePage
- * @requires Button
- * @requires PageTitle
- * @requires Image
- * @requires Link
- * @description The Home Page of the app
- */
-
 import migrateCategories from '@/actions/migrateCategories';
 import migrateProducts from '@/actions/migrateProducts';
 import AnimatedImg from '@/components/AnimatedImg';
@@ -17,6 +6,16 @@ import Button from '@/components/Button';
 import PageTitle from '@/components/PageTitle';
 import Link from 'next/link';
 
+/**
+ * @description The Home Page of the app
+ * @module app/(home)/page.js
+ * @returns {JSX.Element} JSX.Element - the Home Page
+ * @exports HomePage
+ * @requires Button
+ * @requires PageTitle
+ * @requires Image
+ * @requires Link
+ */
 const HomePage = () => {
 	migrateProducts(); //used just one time to populate the products collection in firestore
 	migrateCategories(); //used just one time to populate the categories collection in firestore

@@ -1,11 +1,12 @@
 /**
- * * SocialButton.js
+ * @description It is an internal function that returns the buttons corresponding to the Social Networks. It is used in the Footer component.
+ * @module components/SocialButton.js
+ * @returns {JSX.Element} - the Social Button component
+ * @exports SocialButton
  * @param children Is the component to be placed inside the SocialButton component
  * @param label Is the ‘label’ to be assigned to the children
  * @param href Corresponds to the URL associated with the children
- * @description It is an internal function that returns the buttons corresponding to the Social Networks. It is used in the Footer component.
  */
-
 const SocialButton = ({ children, label, href }) => {
 	return (
 		<a

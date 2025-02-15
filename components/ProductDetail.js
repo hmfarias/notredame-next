@@ -1,13 +1,3 @@
-/**
- * @module components/ProductDetail.js
- * @returns {JSX.Element} - the Product Detail
- * @exports ProductDetail
- * @requires getProductById
- * @requires PageTitle
- * @requires DetailList
- * @description The Product Detail component returns a product detail page
- */
-
 'use client';
 import { Truck } from 'lucide-react';
 import Image from 'next/image';
@@ -16,8 +6,17 @@ import GetStockMessage from './GetStockMessage';
 import RatingStars from './RatingStars';
 import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '@/providers/CartProvider';
-import { showErrorToast, showSuccessToast, showWarningToast } from '@/utils/toasts';
+import { showWarningToast } from '@/utils/toasts';
 
+/**
+ * @description Returns the Product Detail component
+ * @module components/ProductDetail.js
+ * @returns {JSX.Element} - the Product Detail
+ * @exports ProductDetail
+ * @requires getProductById
+ * @requires PageTitle
+ * @requires DetailList
+ */
 const ProductDetail = ({ product }) => {
 	//Receives from the ‘CartContext’ context, the value of the shopping cart counter and the updating function of that state.
 	const { cartState, addItem, removeItem } = useContext(CartContext);

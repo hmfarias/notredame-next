@@ -1,14 +1,13 @@
 /**
- * @module assets/categoriesData.js
- * @returns {Array} categories - The categories array
- * @exports categories
  * @description This file contains the categories array. It is used to populate the categories colection in firestore database by the migrateCategories action.
  * The categories array is an array of objects, where each object represents a category with the following properties:
  * slug - The slug of the category
  * name - The name of the category
  * url - The URL of the category
+ * @module assets/categoriesData.js
+ * @returns {Array} categories - The categories array
+ * @exports categories
  */
-
 export const categories = [
 	{
 		slug: 'beauty',

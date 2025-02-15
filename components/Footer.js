@@ -1,16 +1,15 @@
+import { Instagram, Twitter, Youtube } from 'lucide-react';
+import SocialButton from './SocialButton';
+import Image from 'next/image';
+
 /**
+ * @description Returns the Footer component
  * @module components/Footer.js
  * @returns {JSX.Element} - the Footer component
  * @exports Footer
  * @requires Image
  * @requires SocialButton
- * @description The Footer component returns the footer of the app
  */
-
-import { Instagram, Twitter, Youtube } from 'lucide-react';
-import SocialButton from './SocialButton';
-import Image from 'next/image';
-
 const Footer = () => {
 	return (
 		<footer className="bg-primary p-4 text-sm">

@@ -1,14 +1,3 @@
-/**
- * @module app/api/products/route.js
- * @description This is the API route for products
- * Implement the following routes:
- * @route GET /api/products
- * @description Fetches the products list from the API. If a category is provided, it fetches the products by category else it fetches all products
- * @route POST /api/products
- * @param {*} req
- * @returns {Object} NextResponse
- */
-
 import { db } from '@/firebase';
 import { collection, getDocs, where, query, addDoc } from 'firebase/firestore';
 import { NextResponse } from 'next/server';

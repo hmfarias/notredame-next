@@ -1,10 +1,3 @@
-/**
- * @module app/admin/page.js
- * @returns {JSX.Element} JSX.Element - the Admin Panel page
- * @exports AdminPage
- * @requires PageTitle
- * @description The Admin Panel page
- */
 'use client';
 
 import createNewProduct from '@/actions/createNewProduct';
@@ -16,6 +9,13 @@ import { showWarningToast } from '@/utils/toasts';
 import { useRouter } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
 
+/**
+ * @description returns the Admin Panel page
+ * @module app/admin/page.js
+ * @returns {JSX.Element} JSX.Element - the Admin Panel page
+ * @exports AdminPage
+ * @requires PageTitle
+ */
 const AdminPage = () => {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');

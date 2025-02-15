@@ -1,19 +1,13 @@
 'use client';
+import { motion } from 'motion/react';
+
 /**
+ * @description The Animated Title component returns a component that animates a title and a description on the page
  * @module components/AnimatedTitle.js
  * @returns {JSX.Element} - the Animated Title component
  * @exports AnimatedTitle
  * @requires motion
- * @description The Animated Title component retunrs a animated title in h1 label with a description in p label
- * @example
- * <AnimatedTitle
- * text="Welcome to "
- * textSecondary="NotreDame!"
- * textDescription="An online multi-shop where you can find any product you need!"
- * />
  */
-import { motion } from 'motion/react';
-
 const AnimatedTitle = (props) => {
 	return (
 		<>

@@ -1,24 +1,31 @@
 'use client';
-import Link from 'next/link';
+
+import LogoHeader from './LogoHeader';
+import Navbar from './Navbar';
+import CartWidget from './CartWidget';
+
 /**
+ * @description Returns the Header component
  * @module components/Header.js
  * @returns {JSX.Element} - the Header component
  * @exports Header
  * @requires LogoHeader
  * @requires Navbar
- * @description The Header component returns the header of the app
+ * @requires CartWidget
  */
-
-import LogoHeader from './LogoHeader';
-import Navbar from './Navbar';
-
 const Header = () => {
 	return (
 		<header className="relative flex items-center justify-between p-4 bg-primary">
 			{/* logo */}
-			<LogoHeader />
-			{/* Navbar and Cart with counter*/}
-			<Navbar />
+			<div className="flex-1">
+				<LogoHeader />
+			</div>
+			<div className="flex justify-end ml-auto space-x-4">
+				{/* Cart with counter*/}
+				<CartWidget />
+				{/* Navbar */}
+				<Navbar />
+			</div>
 		</header>
 	);
 };

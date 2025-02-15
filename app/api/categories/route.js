@@ -1,13 +1,3 @@
-/**
- * @module app/api/categories/route.js
- * @description This is the API route for categories
- * Implement the following routes:
- * @route GET /api/categories
- * @description Fetches the categories list from the API.
- * @route POST /api/categories
- * @returns {Object} NextResponse
- */
-
 import { db } from '@/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { NextResponse } from 'next/server';

@@ -1,4 +1,12 @@
+import Link from 'next/link';
+import AdminLink from './AdminLink';
+import AuthLink from './AuthLink';
+import { Menu, X } from 'lucide-react';
+import AnimatedMenu from './AnimatedMenu';
+import { useState } from 'react';
+
 /**
+ * @description Returns the navbar of the app (desktop and mobile).
  * @module components/Navbar.js
  * @returns {JSX.Element} - the Navbar component
  * @exports Navbar
@@ -9,16 +17,7 @@
  * @requires X
  * @requires AnimatedMenu
  * @requires useState
- * @description The Navbar component returns the navbar of the app
  */
-import Link from 'next/link';
-import AdminLink from './AdminLink';
-import AuthLink from './AuthLink';
-import { Menu, X } from 'lucide-react';
-import AnimatedMenu from './AnimatedMenu';
-import { useState } from 'react';
-import CartWidget from './CartWidget';
-
 const Navbar = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 
@@ -28,10 +27,8 @@ const Navbar = () => {
 
 	return (
 		<>
-			{/* Cart Counter and Navbar */}
-			<div className="flex items-center space-x-4">
-				{/* Cart with counter */}
-				<CartWidget />
+			{/*Navbar */}
+			<div className="flex items-center space-x-4 mr-0">
 				{/* Navbar Desktop */}
 				<nav className="hidden md:flex space-x-4">
 					<Link href="/" className="text-text hover:text-secondary">
@@ -43,9 +40,9 @@ const Navbar = () => {
 					<AdminLink />
 					<AuthLink />
 				</nav>
-				{/* Menu Mobile */}
+				{/* Navbar Mobile */}
 				<div className="md:hidden relative">
-					<button onClick={toggleMenu} className="focus:outline-none flex items-center">
+					<button onClick={toggleMenu} className="focus:outline-none flex items-end">
 						{menuOpen ? (
 							<X className="w-6 h-6 text-text hover:text-secondary" />
 						) : (

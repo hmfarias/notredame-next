@@ -1,18 +1,16 @@
+import Button from '@/components/Button';
+import Image from 'next/image';
+import Link from 'next/link';
+
 /**
+ * @description This module exports the NotFoundPage component. It is a component that displays a 404 Not Found page with a Home Page button link
  * @module app/not-found.js
  * @returns {JSX.Element} JSX.Element - the 404 Not Found page
  * @exports NotFoundPage
  * @requires Button
  * @requires Image
  * @requires Link
- * @description
- * This module exports the NotFoundPage component. It is a component that displays a 404 Not Found page with a Home Page button link
  */
-
-import Button from '@/components/Button';
-import Image from 'next/image';
-import Link from 'next/link';
-
 const NotFoundPage = () => {
 	return (
 		<section className="grow grid place-content-center bg-gradient-to-r from-gray-900 to-gray-700 p-10">

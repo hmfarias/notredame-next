@@ -1,5 +1,11 @@
 'use client';
+
+import { AuthContext } from '@/providers/AuthProvider';
+import { useRouter } from 'next/navigation';
+import { useContext, useEffect, useState } from 'react';
+
 /**
+ * @description Returns the Login page
  * @module app/login/page.js
  * @returns {JSX.Element} JSX.Element - the Login page
  * @exports LoginPage
@@ -8,13 +14,7 @@
  * @requires useContext
  * @requires useEffect
  * @requires useState
- * @description The Login page
  */
-
-import { AuthContext } from '@/providers/AuthProvider';
-import { useRouter } from 'next/navigation';
-import { useContext, useEffect, useState } from 'react';
-
 const LoginPage = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');

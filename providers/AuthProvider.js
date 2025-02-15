@@ -1,19 +1,4 @@
 'use client';
-/**
- * @module providers/AuthProvider.js
- * @returns {Object} - the Auth Context Provider
- * @exports AuthContextProvider
- * @requires auth
- * @requires showErrorToast
- * @requires showSuccessToast
- * @requires onAuthStateChanged
- * @requires signInWithEmailAndPassword
- * @requires signOut
- * @requires createContext
- * @requires useEffect
- * @requires useState
- * @description The Auth Context Provider is a React context provider that manages the authentication state of the application. It provides the current user, whether the user is logged in or not, and functions to handle user login and logout.
- */
 
 // Steps to create a context provider
 // 1. Create a context using React.createContext (import createContext from React)
@@ -29,6 +14,11 @@ export const AuthContext = createContext();
 const { Provider } = AuthContext;
 
 // 4. Create a new component that uses the Provider inside of its return
+/**
+ * @description The Auth Context Provider is a React context provider that manages the authentication state of the application. It provides the current user, whether the user is logged in or not, and functions to handle user login and logout.
+ * @module providers/AuthProvider.js
+ * @returns {Object} - the Auth Context Provider
+ */
 export const AuthContextProvider = (props) => {
 	const [logedIn, setLogedIn] = useState(false);
 	const [currentUser, setCurrentUser] = useState(null);

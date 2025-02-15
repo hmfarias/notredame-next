@@ -1,18 +1,17 @@
+'use client';
+import { MoveUpRight } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+
 /**
+ * @description Returns a list of products. It is a list of cards with an image and information about the product.
  * @module components/ProductList.js
  * @returns {JSX.Element} - the Product List component
  * @exports ProductList
  * @requires MoveUpRight
  * @requires Image
  * @requires Link
- * @description The Product List component returns a responsive list of products rendered in a grid layout in cards format.
  */
-
-'use client';
-import { MoveUpRight } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-
 const ProductList = ({ products }) => {
 	return (
 		<>
