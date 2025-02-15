@@ -30,7 +30,7 @@ const HomePage = () => {
 						textDescription="An online multi-shop where you can find any product you need!"
 					/>
 					<Link href="/products">
-						<Button className=" text-white">Start -&gt;</Button>
+						<Button className="p-3 mt-5 min-w-50 text-2xl ">Start -&gt;</Button>
 					</Link>
 				</div>
 				<AnimatedImg />

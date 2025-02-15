@@ -103,19 +103,19 @@ const ProductDetail = ({ product }) => {
 					</div>
 
 					{/* Add to cart controls */}
-					<p className=" font-semibold m-0 mb-2">Add to cart</p>
-					<div className="flex justify-between min-w-1/3 max-w-1/3 items-center gap-2">
+					<p className="font-semibold m-0 mb-2">Add to cart</p>
+					<div className="flex justify-between items-center gap-4 w-[150px]">
 						<Button
 							aria-label="Decrease quantity"
-							className="bg-gray-900 text-white p-2 rounded-sm hover:translate-y-1 transition-all"
+							className="text-xl rounded-sm hover:translate-y-1 transition-all w-10 min-w-20 py-2"
 							onClick={handleRemoveItem}
 						>
 							-
 						</Button>
-						<p>{count}</p>
+						<p className="w-6 text-center">{count}</p>
 						<Button
 							aria-label="Increase quantity"
-							className="bg-gray-900 text-white p-2 rounded-sm hover:translate-y-1 transition-all"
+							className="text-xl rounded-sm hover:translate-y-1 transition-all w-10 min-w-20 py-2"
 							onClick={handleAddItem}
 						>
 							+

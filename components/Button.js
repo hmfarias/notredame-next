@@ -6,13 +6,13 @@
  * @param {String} props.children - The button's text
  * @returns {JSX.Element} - The button component
  */
-function Button(props) {
+function Button({ className, children, ...props }) {
 	return (
 		<button
-			className={`bg-primary text-text px-6 py-3 rounded-lg shadow-lg hover:bg-accent focus:outline-none min-w-1 ${props.className}`}
-			onClick={props.onClick || null}
+			className={`bg-primary rounded-lg shadow-lg hover:bg-accent focus:outline-none box-border text-background text-center hover:translate-y-1 transition-all ${className}`}
+			{...props} // Propagates all properties to the button element
 		>
-			{props.children}
+			{children}
 		</button>
 	);
 }
