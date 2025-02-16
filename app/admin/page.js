@@ -2,6 +2,7 @@
 
 import createNewProduct from '@/actions/createNewProduct';
 import getCategoriesList from '@/actions/getCategoriesList';
+import getCategoriesListFromServer from '@/actions/getCategoriesListFromServer';
 import Button from '@/components/Button';
 import PageTitle from '@/components/PageTitle';
 import { AuthContext } from '@/providers/AuthProvider';
@@ -57,7 +58,8 @@ const AdminPage = () => {
 	// Get list of categories when mounting the component and sort them alphabetically for use in the input field
 	useEffect(() => {
 		const fetchCategories = async () => {
-			const { payload, error } = await getCategoriesList();
+			// const { payload, error } = await getCategoriesList();
+			const { payload, error } = await getCategoriesListFromServer();
 
 			if (!error) {
 				// Order the categories alphabetically by name

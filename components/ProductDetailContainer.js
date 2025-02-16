@@ -1,3 +1,4 @@
+import getProductByIdFromServer from '@/actions/getProductByIdFromServer';
 import PageTitle from './PageTitle';
 import ProductDetail from './ProductDetail';
 import getProductById from '@/actions/getProductById';
@@ -12,7 +13,8 @@ import getProductById from '@/actions/getProductById';
  * @requires DetailList
  */
 const ProductDetailContainer = async ({ id }) => {
-	const { payload: product, error, message } = await getProductById(id);
+	// const { payload: product, error, message } = await getProductById(id); //localhost:3000/api/product?id
+	const { payload: product, error, message } = await getProductByIdFromServer(id); //firebase
 
 	if (error) {
 		return (

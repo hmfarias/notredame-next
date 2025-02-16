@@ -1,4 +1,5 @@
 import getCategoriesList from '@/actions/getCategoriesList';
+import getCategoriesListFromServer from '@/actions/getCategoriesListFromServer';
 import PageTitle from '@/components/PageTitle';
 import ProductLayoutClient from '@/components/ProductLayoutClient';
 
@@ -14,7 +15,8 @@ import ProductLayoutClient from '@/components/ProductLayoutClient';
  * @exports ProductLayout
  */
 const ProductLayout = async ({ children }) => {
-	const { payload: categories, error, message } = await getCategoriesList();
+	// const { payload: categories, error, message } = await getCategoriesList();//localhost:3000/api/categories
+	const { payload: categories, error, message } = await getCategoriesListFromServer(); //firebase
 
 	if (error) {
 		return (

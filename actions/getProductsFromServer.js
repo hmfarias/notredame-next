@@ -9,24 +9,29 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
  * @param {String} category - The category name or null when fetching all products
  */
 const getProductsFromServer = async (category) => {
-	//reference to the collection in firebase
-	const productsCollection = collection(db, 'products');
+	try {
+		//reference to the collection in firebase
+		const productsCollection = collection(db, 'products');
 
-	// prepare the filter in case a category is received
-	const filter = category
-		? query(productsCollection, where('category', '==', category))
-		: productsCollection;
+		// prepare the filter in case a category is received
+		const filter = category
+			? query(productsCollection, where('category', '==', category))
+			: productsCollection;
 
-	//bring the products of the collection by applying the filter (if no ‘category’ is received the filter will bring all products).
-	const snapshot = await getDocs(filter);
-	return snapshot.docs.map((documenRef) => {
-		const idFirebase = documenRef.id; //the firebase id
-		const productData = {};
-		// replace the original id from dumyJson for the firebase id
-		productData.id = idFirebase;
+		//bring the products of the collection by applying the filter (if no ‘category’ is received the filter will bring all products).
+		const snapshot = await getDocs(filter);
+		return snapshot.docs.map((documenRef) => {
+			const idFirebase = documenRef.id; //the firebase id
+			const productData = {};
+			// replace the original id from dumyJson for the firebase id
+			productData.id = idFirebase;
 
-		return productData;
-	});
+			return productData;
+		});
+	} catch (error) {
+		console.error('Error fetching products:', error);
+		return null;
+	}
 };
 
 export default getProductsFromServer;
