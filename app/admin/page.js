@@ -1,12 +1,17 @@
 'use client';
 
 import createNewProduct from '@/actions/createNewProduct';
+import createNewProductInServer from '@/actions/createNewProductInServer';
 import getCategoriesList from '@/actions/getCategoriesList';
 import getCategoriesListFromServer from '@/actions/getCategoriesListFromServer';
 import Button from '@/components/Button';
 import PageTitle from '@/components/PageTitle';
 import { AuthContext } from '@/providers/AuthProvider';
-import { showWarningToast } from '@/utils/toasts';
+import {
+	showErrorToastCloseAction,
+	showSuccessToastCloseAction,
+	showWarningToast,
+} from '@/utils/toasts';
 import { useRouter } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
 
@@ -76,7 +81,7 @@ const AdminPage = () => {
 		fetchCategories();
 	}, []);
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		// Validations
@@ -106,6 +111,19 @@ const AdminPage = () => {
 			stock: parseInt(stock, 10), // Convert to number
 			thumbnail: thumbnail,
 		};
+
+		// Call createNewProductInServer and handle the response
+		const { error } = await createNewProductInServer(newProduct);
+
+		// Determine the toast type and action
+		const toastAction = error ? showErrorToastCloseAction : showSuccessToastCloseAction;
+		const toastMessage = error
+			? 'Error adding the product'
+			: 'Successfully created product';
+
+		// Show toast and wait for user confirmation
+		await new Promise((resolve) => toastAction(toastMessage, resolve));
+
 		// Reset the form fields after submitting
 		setTitle('');
 		setDescription('');
@@ -114,11 +132,6 @@ const AdminPage = () => {
 		setRating('');
 		setStock('');
 		setThumbnail('');
-
-		//
-		// Show load notification
-
-		createNewProduct(newProduct);
 	};
 
 	return (
@@ -166,7 +179,7 @@ const AdminPage = () => {
 							<select
 								name="category"
 								id="category"
-								className="w-full rounded-md bg-primary/25 p-2 border-0 focus:border-2 focus:border-primary/20 focus:outline-none"
+								className="w-full rounded-md bg-primary/25 p-2.5 border-0 focus:border-2 focus:border-primary/20 focus:outline-none"
 								value={category}
 								onChange={handleChange}
 							>

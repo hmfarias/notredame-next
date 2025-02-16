@@ -26,21 +26,25 @@ const createOrder = async (order) => {
 			await new Promise((resolve) => {
 				showErrorToastCloseAction(message, resolve); //solve the promise when the user closes the toast
 			});
-			return false;
+			return {
+				message: 'Error creating the order',
+				error: true,
+				payload: null,
+			};
 		}
 
-		//Show the success toast and wait until the user closes it
-		await new Promise((resolve) => {
-			showSuccessToastCloseAction(message, resolve); //solve the promise when the user closes the toast
-		});
-
-		return true;
+		return {
+			message,
+			error,
+			payload,
+		};
 	} catch (error) {
-		// Show the error toast and wait for user intervention
-		await new Promise((resolve) => {
-			showErrorToastCloseAction('Error creating the order. ' + error, resolve); //solve the promise when the user closes the toast
-		});
-		return false;
+		console.error('Error creating the order:', error);
+		return {
+			message: 'Error creating the order',
+			error: true,
+			payload: null,
+		};
 	}
 };
 export default createOrder;

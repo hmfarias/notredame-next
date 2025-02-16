@@ -56,9 +56,8 @@ export const showErrorToast = (message, duration = 3500) => {
 };
 
 /**
- * @description Shows an error notification with a message and a duration (in milliseconds). It uses the toast library from react-toastify.
+ * @description Shows an loading notification with a message
  * @param {string} message - The message to be displayed in the notification.
- * @param {number} duration - The duration of the notification in milliseconds.
  * @returns {void} - The function does not return any value.
  * @module utils/toasts.js
  * @requires toast
@@ -76,6 +75,7 @@ export const showLoadingToast = (message) => {
  * @description shows a success toast  with the closing button and driving the overlay
  * @param {string} message - The successful message to be shown in the toast.
  * @param {Function} onClick - The function that will be executed when the user clicks the toast button.
+ * @requires toast
  */
 export const showSuccessToastCloseAction = (message, onCloseAction) => {
 	// make sure that it is only executed in the client
@@ -89,7 +89,7 @@ export const showSuccessToastCloseAction = (message, onCloseAction) => {
 						removeOverlay(); // Eliminate Overlay
 						if (onCloseAction) onCloseAction(); // Execute past action
 					}}
-					className="ml-4 text-sm font-semibold text-background p-2 bg-primary"
+					className="ml-4 text-sm font-semibold text-background p-2 bg-primary min-w-10"
 				>
 					Close
 				</Button>
@@ -110,7 +110,8 @@ export const showSuccessToastCloseAction = (message, onCloseAction) => {
 /**
  * Show an error toast and wait for user intervention before executing an action.
  * @param {string} message - The error message that will be displayed in the toast.
- * @param {Function} onCloseAction - The action that will be executed when the user clicks on the toast closure button.
+ * @param {Function} onCloseAction - The action that will be executed when the user clicks on the toast
+ * @requires toast
  */
 export const showErrorToastCloseAction = (message, onCloseAction) => {
 	// make sure that it is only executed in the client
@@ -124,7 +125,7 @@ export const showErrorToastCloseAction = (message, onCloseAction) => {
 						removeOverlay(); // Eliminate Overlay
 						if (onCloseAction) onCloseAction(); // Execute past action
 					}}
-					className="ml-4 text-sm font-semibold text-background p-2 bg-primary"
+					className="ml-4 text-sm font-semibold text-background p-2 bg-primary min-w-10"
 				>
 					Close
 				</Button>
@@ -140,6 +141,16 @@ export const showErrorToastCloseAction = (message, onCloseAction) => {
 		// Add overlay when the toast is shown
 		addOverlay();
 	}
+};
+
+/**
+ * @description Dismiss all toasts
+ * @returns {void} - The function does not return any value.
+ * @module utils/toasts.js
+ * @requires toast
+ */
+export const dismissToasts = () => {
+	toast.dismiss();
 };
 
 // Function to add the overlay

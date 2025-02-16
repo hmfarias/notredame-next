@@ -1,9 +1,13 @@
 'use client';
-import createOrder from '@/actions/createOrder';
+import createOrderInServer from '@/actions/createOrderInServer';
 import Button from '@/components/Button';
 import PageTitle from '@/components/PageTitle';
 import { AuthContext } from '@/providers/AuthProvider';
-import { showWarningToast } from '@/utils/toasts';
+import {
+	showErrorToastCloseAction,
+	showSuccessToastCloseAction,
+	showWarningToast,
+} from '@/utils/toasts';
 import { CartContext } from '@/providers/CartProvider';
 import { useRouter } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
@@ -22,7 +26,7 @@ const PymentPage = () => {
 	const { cartState, setCartState } = useContext(CartContext);
 
 	// consumes the context
-	const { logedIn, handleLogin, handleLogout, currentUser } = useContext(AuthContext);
+	const { currentUser } = useContext(AuthContext);
 
 	const router = useRouter();
 
@@ -89,16 +93,21 @@ const PymentPage = () => {
 		setLastName('');
 		setEmail('');
 
-		// Call createorder and wait for the result
-		const orderCreated = await createOrder(newOrderObj);
-		if (orderCreated) {
-			// Empty the cart and sail to home if the order was created successfully
-			setCartState([]);
-			router.push('/');
-		} else {
-			// If the order was not created successfully, just navigate to home without emptying the cart
-			router.push('/');
-		}
+		// Call createOrderInServer and handle the response
+		const { error } = await createOrderInServer(newOrderObj);
+
+		// Determine the toast type and action
+		const toastAction = error ? showErrorToastCloseAction : showSuccessToastCloseAction;
+		const toastMessage = error
+			? 'Error creating the order'
+			: 'Successfully created order';
+
+		// Show toast and wait for user confirmation
+		await new Promise((resolve) => toastAction(toastMessage, resolve));
+
+		// Navigate home, clearing the cart only if the order was successful
+		if (!error) setCartState([]);
+		router.push('/');
 	};
 
 	return (
