@@ -17,8 +17,8 @@ import Link from 'next/link';
  * @requires Link
  */
 const HomePage = () => {
-	migrateProducts(); //used just one time to populate the products collection in firestore
-	migrateCategories(); //used just one time to populate the categories collection in firestore
+	// migrateProducts(); //used just one time to populate the products collection in firestore
+	// migrateCategories(); //used just one time to populate the categories collection in firestore
 	return (
 		<>
 			<PageTitle>Home</PageTitle>

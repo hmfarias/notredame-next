@@ -1,11 +1,11 @@
-import getProductsFromServer from '@/actions/getProductsFromServer';
+import getProductsFromServerParams from '@/actions/getProductsFromServerParams';
 import LoadingSkeleton from '@/components/LoadingSkeleton';
 import PageTitle from '@/components/PageTitle';
 import ProductDetailContainer from '@/components/ProductDetailContainer';
 import { Suspense } from 'react';
 
 export const generateStaticParams = async () => {
-	const params = await getProductsFromServer();
+	const params = await getProductsFromServerParams();
 	return params;
 };
 
