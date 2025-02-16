@@ -1,5 +1,6 @@
 'use client';
 
+import Button from '@/components/Button';
 import { AuthContext } from '@/providers/AuthProvider';
 import { useRouter } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
@@ -23,7 +24,8 @@ const LoginPage = () => {
 
 	useEffect(() => {
 		if (logedIn) {
-			router.push('/');
+			router.back();
+			// router.push('/');
 		}
 	}, [logedIn]);
 
@@ -46,7 +48,7 @@ const LoginPage = () => {
 
 	return (
 		<section className="grow grid place-items-center">
-			<div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-accent/50 text-text mt-10">
+			<div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-accent/30 text-text mt-10">
 				<h1 className="text-2xl font-bold text-center">Login</h1>
 				<form noValidate="" action="" className="space-y-6" onSubmit={handleSubmit}>
 					<div className="space-y-1 text-sm">
@@ -58,7 +60,7 @@ const LoginPage = () => {
 							name="email"
 							id="email"
 							placeholder="Email"
-							className="w-full px-4 py-3 rounded-md border-accent bg-background text-text  focus:border-accent "
+							className="w-full rounded-md bg-background px-4 py-3 border-0 focus:border-2 focus:border-primary/50 focus:outline-none"
 							onChange={handleChange}
 						/>
 					</div>
@@ -71,13 +73,11 @@ const LoginPage = () => {
 							name="password"
 							id="password"
 							placeholder="Password"
-							className="w-full px-4 py-3 rounded-md border-accent bg-background text-text  focus:border-accent"
+							className="w-full rounded-md bg-background px-4 py-3 border-0 focus:border-2 focus:border-primary/50 focus:outline-none"
 							onChange={handleChange}
 						/>
 					</div>
-					<button className="block w-full p-3 text-center rounded-sm text-gray-900 dark:text-gray-50 bg-primary dark:bg-primary">
-						Sign in
-					</button>
+					<Button className="block w-full p-3 bg-primary  ">Sign in</Button>
 				</form>
 			</div>
 		</section>

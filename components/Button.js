@@ -9,7 +9,7 @@
 function Button({ className, children, ...props }) {
 	return (
 		<button
-			className={`bg-primary rounded-lg shadow-lg hover:bg-accent focus:outline-none box-border text-background text-center hover:translate-y-1 transition-all ${className}`}
+			className={`rounded-lg shadow-lg hover:bg-accent focus:outline-none box-border text-background text-center hover:translate-y-1 transition-all ${className}`}
 			{...props} // Propagates all properties to the button element
 		>
 			{children}

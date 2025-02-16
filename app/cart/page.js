@@ -51,7 +51,7 @@ export const CartPage = () => {
 						>
 							{/* Image */}
 							<Image
-								src={item.thumbnail}
+								src={item.thumbnail?.trim() ? item.thumbnail : '/defect-product.png'}
 								alt={item.title}
 								width={100}
 								height={100}
@@ -63,7 +63,7 @@ export const CartPage = () => {
 									<p>Precio: ${item.price.toFixed(2)}</p>
 									<div className="flex items-center space-x-2">
 										<Button
-											className="p-1 disabled:opacity-50 min-w-10 text-2xl "
+											className="p-1 disabled:opacity-50 min-w-10 text-2xl bg-primary  "
 											onClick={() => removeItem(item)}
 											disabled={item.qtyItem === 1}
 										>
@@ -71,7 +71,7 @@ export const CartPage = () => {
 										</Button>
 										<span>{item.qtyItem}</span>
 										<Button
-											className="p-1 disabled:opacity-50 min-w-10 text-2xl"
+											className="p-1 disabled:opacity-50 min-w-10 text-2xl bg-primary "
 											onClick={() => addItem(item)}
 											disabled={item.qtyItem >= item.stock}
 										>
@@ -85,12 +85,17 @@ export const CartPage = () => {
 									<p className="font-bold">
 										Subtotal: ${(item.price * item.qtyItem).toFixed(2)}
 									</p>
-									<Button
-										className="p-1 bg-red-500 "
-										onClick={() => handleDeleteItem(item)}
-									>
-										<Trash2 className="text-background" />
-									</Button>
+									<div className="relative group">
+										<Button
+											className="p-1 bg-red-500"
+											onClick={() => handleDeleteItem(item)}
+										>
+											<Trash2 className="text-background" />
+										</Button>
+										<span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-0 min-w-[90px] text-center whitespace-nowrap">
+											Delete product
+										</span>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -98,9 +103,19 @@ export const CartPage = () => {
 					<hr className="border-accent/30" />
 					<div className="flex flex-col sm:flex-row items-center justify-between mt-5">
 						<p className="text-xl sm:text-2xl font-bold">Total: ${total.toFixed(2)}</p>
-						<div className="w-full sm:w-1/3 mt-4 sm:mt-0">
-							<Button className="w-full py-2 px-4" onClick={handleNavigatePayment}>
-								Buy
+						<div className="flex justify-end space-x-4">
+							<Button
+								className="px-6 py-2 border rounded-md bg-primary "
+								onClick={() => router.back()}
+							>
+								Back
+							</Button>
+
+							<Button
+								className="w-full py-2 px-4 bg-primary "
+								onClick={handleNavigatePayment}
+							>
+								Continue to Checkout
 							</Button>
 						</div>
 					</div>

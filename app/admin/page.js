@@ -36,6 +36,7 @@ const AdminPage = () => {
 		}
 	}, [logedIn]);
 
+	// Methods is an object that contains the functions to handle the input fields
 	const methods = {
 		title: setTitle,
 		description: setDescription,
@@ -113,6 +114,8 @@ const AdminPage = () => {
 		setThumbnail('');
 
 		//
+		// Show load notification
+
 		createNewProduct(newProduct);
 	};
 
@@ -120,7 +123,7 @@ const AdminPage = () => {
 		<>
 			<PageTitle> Admin Panel</PageTitle>
 			<form noValidate="" action="" className="p-4" onSubmit={handleSubmit}>
-				<fieldset className="w-11/12 max-w-7xl flex flex-col mx-auto space-y-12 p-4 rounded-lg shadow-md bg-white mt-4">
+				<fieldset className="w-11/12 max-w-7xl flex flex-col mx-auto space-y-12 px-4 rounded-lg shadow-md bg-white">
 					<div className="m-4 text-text">
 						<p className="font-bold text-2xl">Product load</p>
 						<p className="text-xs">This is the space where you can load products.</p>
@@ -135,7 +138,7 @@ const AdminPage = () => {
 								id="title"
 								type="text"
 								placeholder='eg: Laptop lenovo 15"'
-								className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 border-primary/70 border bg-primary/10 p-2"
+								className="w-full rounded-md bg-primary/25 p-2 border-0 focus:border-2 focus:border-primary/20 focus:outline-none"
 								value={title}
 								onChange={handleChange}
 							/>
@@ -149,7 +152,7 @@ const AdminPage = () => {
 								id="description"
 								rows="4"
 								placeholder="Enter product description..."
-								className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 border-primary/70 border bg-primary/10 p-2 resize-none"
+								className="w-full rounded-md bg-primary/25 p-2 border-0 focus:border-2 focus:border-primary/20 focus:outline-none"
 								value={description}
 								onChange={handleChange}
 							/>
@@ -161,7 +164,7 @@ const AdminPage = () => {
 							<select
 								name="category"
 								id="category"
-								className="w-full rounded-md border-primary/70 border bg-primary/10 p-2 focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600"
+								className="w-full rounded-md bg-primary/25 p-2 border-0 focus:border-2 focus:border-primary/20 focus:outline-none"
 								value={category}
 								onChange={handleChange}
 							>
@@ -182,7 +185,7 @@ const AdminPage = () => {
 								id="price"
 								type="text"
 								placeholder="eg: $100"
-								className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600  border-primary/70 border bg-primary/10 p-2"
+								className="w-full rounded-md bg-primary/25 p-2 border-0 focus:border-2 focus:border-primary/20 focus:outline-none"
 								value={price ? `$${price}` : ''} // Shows the dollars and cents
 								onChange={(e) => {
 									let value = e.target.value.replace(/[^0-9.]/g, ''); // Allows only numbers and point
@@ -203,7 +206,7 @@ const AdminPage = () => {
 								id="stock"
 								type="text"
 								placeholder="10"
-								className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 border-primary/70 border bg-primary/10 p-2"
+								className="w-full rounded-md bg-primary/25 p-2 border-0 focus:border-2 focus:border-primary/20 focus:outline-none"
 								value={stock !== undefined && stock !== null ? `units ${stock}` : ''} // Muestra el valor seguido de "units"
 								onChange={(e) => {
 									let value = e.target.value.replace(/[^0-9]/g, ''); // Allows only numbers
@@ -222,12 +225,14 @@ const AdminPage = () => {
 								id="thumbnail"
 								type="url"
 								placeholder="Enter image URL"
-								className="w-full rounded-md border-primary/70 border bg-primary/10 p-2 focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600"
+								className="w-full rounded-md bg-primary/25 p-2 border-0 focus:border-2 focus:border-primary/20 focus:outline-none"
 								value={thumbnail}
 								onChange={handleChange}
 							/>
 						</div>
-						<Button className="col-span-full sm:col-span-2 my-5">Save Product</Button>
+						<Button className="col-span-full sm:col-span-2 my-5 p-3 bg-primary ">
+							Save Product
+						</Button>
 					</div>
 				</fieldset>
 			</form>

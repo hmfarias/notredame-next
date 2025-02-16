@@ -22,7 +22,7 @@ const HomePage = () => {
 	return (
 		<>
 			<PageTitle>Home</PageTitle>
-			<div className="mt-4 flex grow flex-col gap-4 md:flex-row">
+			<div className="mt-8 flex grow flex-col gap-4 md:flex-row">
 				<div className="flex flex-col justify-center items-center gap-2 md:gap-4rounded-lg bg-background md:w-2/5 md:px-5 text-center text-text md:leading-normal">
 					<AnimatedTitle
 						text="Welcome to "
@@ -30,7 +30,9 @@ const HomePage = () => {
 						textDescription="An online multi-shop where you can find any product you need!"
 					/>
 					<Link href="/products">
-						<Button className="p-3 mt-5 min-w-50 text-2xl ">Start -&gt;</Button>
+						<Button className="p-3 mt-5 min-w-50 text-2xl bg-primary ">
+							Start -&gt;
+						</Button>
 					</Link>
 				</div>
 				<AnimatedImg />

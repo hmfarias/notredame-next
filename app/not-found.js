@@ -33,7 +33,7 @@ const NotFoundPage = () => {
 				</div>
 				<div className="mt-8 space-x-4">
 					<Link href="/">
-						<Button>Go Home</Button>
+						<Button className="p-2 mt-5 min-w-50 text-xl bg-primary ">Go Home</Button>
 					</Link>
 				</div>
 			</div>

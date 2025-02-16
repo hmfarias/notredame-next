@@ -7,6 +7,7 @@ import RatingStars from './RatingStars';
 import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '@/providers/CartProvider';
 import { showWarningToast } from '@/utils/toasts';
+import { useRouter } from 'next/navigation';
 
 /**
  * @description Returns the Product Detail component
@@ -23,7 +24,9 @@ const ProductDetail = ({ product }) => {
 
 	//Local states are defined
 	const [count, setCount] = useState(0);
-	// const toast = useToast();
+
+	// Use useRouter for navigation
+	const router = useRouter();
 
 	const handleAddItem = () => {
 		const newCount = count + 1;
@@ -104,10 +107,10 @@ const ProductDetail = ({ product }) => {
 
 					{/* Add to cart controls */}
 					<p className="font-semibold m-0 mb-2">Add to cart</p>
-					<div className="flex justify-between items-center gap-4 w-[150px]">
+					<div className="flex items-center gap-4 ">
 						<Button
 							aria-label="Decrease quantity"
-							className="text-xl rounded-sm hover:translate-y-1 transition-all w-10 min-w-20 py-2"
+							className="text-xl rounded-sm hover:translate-y-1 transition-all w-10 min-w-20 py-2 bg-primary "
 							onClick={handleRemoveItem}
 						>
 							-
@@ -115,10 +118,16 @@ const ProductDetail = ({ product }) => {
 						<p className="w-6 text-center">{count}</p>
 						<Button
 							aria-label="Increase quantity"
-							className="text-xl rounded-sm hover:translate-y-1 transition-all w-10 min-w-20 py-2"
+							className="text-xl rounded-sm hover:translate-y-1 transition-all w-10 min-w-20 py-2 bg-primary "
 							onClick={handleAddItem}
 						>
 							+
+						</Button>
+						<Button
+							className="text-xl rounded-sm hover:translate-y-1 transition-all w-10 min-w-20 py-2 ml-auto mr-2 md:mr-10 bg-accent "
+							onClick={() => router.back()}
+						>
+							Back
 						</Button>
 					</div>
 
