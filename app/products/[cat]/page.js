@@ -1,7 +1,13 @@
+import getProductsFromServer from '@/actions/getProductsFromServer';
 import LoadingSkeleton from '@/components/LoadingSkeleton';
 import PageTitle from '@/components/PageTitle';
 import ProductListContainer from '@/components/ProductListContainer';
 import { Suspense } from 'react';
+
+export const generateStaticParams = async () => {
+	const params = await getProductsFromServer();
+	return params;
+};
 
 /**
  * @description Returns the Products by Category page
