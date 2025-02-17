@@ -15,7 +15,7 @@
   <p align="center">
     Polirubro online
     <br />
-    <a href="" target="_blank" ><strong>Explora el sitio en Git Pages»</strong></a>
+    <a href="https://notredame-next.vercel.app/" target="_blank" ><strong>Explora el sitio ONLINE»</strong></a>
     <br />
     <br />
     <a href="https://github.com/hmfarias/notredame-next">Ver repositorio</a>
