@@ -58,6 +58,8 @@ const getProductsFromServer = async (category) => {
 
 		// El cambio clave: Establecer la fuente en 'server'
 		const snapshot = await getDocs(filter, { source: 'server' }); // o 'cache' o 'default'
+		console.log('-------------------------------------');
+		console.log(snapshot.docs);
 
 		const products = snapshot.docs.map((documenRef) => {
 			const idFirebase = documenRef.id;

@@ -89,7 +89,7 @@ export const showSuccessToastCloseAction = (message, onCloseAction) => {
 						removeOverlay(); // Eliminate Overlay
 						if (onCloseAction) onCloseAction(); // Execute past action
 					}}
-					className="ml-4 text-sm font-semibold text-background p-2 bg-primary min-w-10"
+					className="ml-4 text-sm font-semibold text-background p-2 bg-primary min-w-20"
 				>
 					Close
 				</Button>
@@ -125,7 +125,7 @@ export const showErrorToastCloseAction = (message, onCloseAction) => {
 						removeOverlay(); // Eliminate Overlay
 						if (onCloseAction) onCloseAction(); // Execute past action
 					}}
-					className="ml-4 text-sm font-semibold text-background p-2 bg-primary min-w-10"
+					className="ml-4 text-sm font-semibold text-background p-2 bg-primary min-w-20"
 				>
 					Close
 				</Button>
