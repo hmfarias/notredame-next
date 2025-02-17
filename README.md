@@ -35,7 +35,8 @@
 1. [Introducción](#introduccion)
 2. [Construido con](#consturido)
 3. [Algunas Consideraciones](#consideraciones)
-   * [StaticParams](#static)
+   * [Usuario y clave](#usrPassword)
+   * [Static Params](#static)
    * [Local Storage](#localstorage)
    * [Comentarios en el código](#comentarios)
 5. [Esquema de la App](#esquema)
@@ -92,6 +93,20 @@ Esta aplicación es una plataforma de comercio electrónico desarrollada con Nex
 
 ## ALGUNAS CONSIDERACIONES
 
+<a name="usrPassword"></a>
+
+### USUARIO Y CLAVE
+Tratándose de una app con fines didacticos y para prueba, se proporciona a continuación el usuario y la clave para loguearse al sistema:
+
+- Usuario: admin@notredame.com
+
+- clave: admin123
+
+[Volver al menú](#top)
+
+<hr>
+
+
 <a name="static"></a>
 
 ### STATIC PARAMS
@@ -103,6 +118,9 @@ Sin embargo, para poder mostrar en producción las funcionalidades de carga de p
 
 Como solución, con fines didácticos se optó por una estrategia de renderizado dinámico para garantizar que los cambios en la base de datos se reflejen de inmediato en la interfaz del usuario.
 
+[Volver al menú](#top)
+
+<hr>
 
 <a name="localstorage"></a>
 
@@ -110,6 +128,9 @@ Como solución, con fines didácticos se optó por una estrategia de renderizado
 
 La App guarda el estado del carrito de compras en el Local Storage del navegador y lo mantiene actualizado cada vez que el mismo tiene alguna modificación. Finalmente lo vacía en caso de que el usuario procese una orden de Compra con éxito.
 
+[Volver al menú](#top)
+
+<hr>
 
 <a name="comentarios"></a>
 
