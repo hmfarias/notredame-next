@@ -1,5 +1,4 @@
 import { db } from '@/firebase';
-import { showErrorToast, showSuccessToast } from '@/utils/toasts';
 import { doc, getDoc, writeBatch } from 'firebase/firestore';
 
 /**
@@ -28,10 +27,10 @@ const updateStockInServer = async (products) => {
 
 		await batch.commit(); // Execute all updates at once
 
-		showSuccessToast('Stock updated', 500);
+		// showSuccessToast('Stock updated', 500);
 		console.log('Stock updated successfully!');
 	} catch (error) {
-		showErrorToast('Error updating stock', 500);
+		// showErrorToast('Error updating stock', 500);
 		console.error('Error updating stock:', error);
 	}
 };
