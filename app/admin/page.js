@@ -108,7 +108,7 @@ const AdminPage = () => {
 			price: parseFloat(price), // Convert to number
 			rating: rating ? parseFloat(rating) : 4, // If rating is empty, assign 4
 			stock: parseInt(stock, 10), // Convert to number
-			thumbnail: thumbnail,
+			thumbnail: '',
 		};
 
 		// Call createNewProductInServer and handle the response
