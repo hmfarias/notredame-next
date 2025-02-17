@@ -31,6 +31,7 @@ const getProductsFromServer = async (category) => {
 
 			return productData;
 		});
+
 		return {
 			message: 'Products fetched successfully',
 			error: false,
