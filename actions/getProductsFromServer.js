@@ -50,61 +50,30 @@ import { collection, getDocs, onSnapshot, query, where } from 'firebase/firestor
 // export default getProductsFromServer;
 const getProductsFromServer = async (category) => {
 	try {
-		// Referencia a la colección en Firebase
+		const db = getFirestore(); // Inicializa Firestore
 		const productsCollection = collection(db, 'products');
 
-		// Preparar el filtro en caso de que se reciba una categoría
 		const filter = category
 			? query(productsCollection, where('category', '==', category))
 			: productsCollection;
 
-		// Usar una promesa para manejar el listener de onSnapshot
-		return new Promise((resolve, reject) => {
-			const unsubscribe = onSnapshot(
-				filter,
-				(snapshot) => {
-					try {
-						// Procesar los documentos del snapshot
-						const products = snapshot.docs.map((documenRef) => {
-							const idFirebase = documenRef.id; // ID de Firebase
-							const productData = documenRef.data(); // Datos del producto
-							productData.id = idFirebase; // Reemplazar el ID original por el ID de Firebase
-							return productData;
-						});
+		// El cambio clave: Establecer la fuente en 'server'
+		const snapshot = await getDocs(filter, { source: 'server' }); // o 'cache' o 'default'
 
-						// Resolver la promesa con el objeto de respuesta exitosa
-						resolve({
-							message: 'Products fetched successfully',
-							error: false,
-							payload: products,
-						});
-					} catch (innerError) {
-						console.error('Error processing snapshot:', innerError);
-
-						// Rechazar la promesa con el objeto de error
-						reject({
-							message: 'Error processing products',
-							error: true,
-							payload: null,
-						});
-					}
-				},
-				(error) => {
-					console.error('Error in onSnapshot listener:', error);
-
-					// Rechazar la promesa con el objeto de error
-					reject({
-						message: 'Error fetching products',
-						error: true,
-						payload: null,
-					});
-				}
-			);
+		const products = snapshot.docs.map((documenRef) => {
+			const idFirebase = documenRef.id;
+			const productData = documenRef.data();
+			productData.id = idFirebase;
+			return productData;
 		});
-	} catch (outerError) {
-		console.error('Error setting up onSnapshot:', outerError);
 
-		// Retornar un objeto de error en caso de fallo general
+		return {
+			message: 'Products fetched successfully',
+			error: false,
+			payload: products,
+		};
+	} catch (error) {
+		console.error('Error fetching products:', error);
 		return {
 			message: 'Error fetching products',
 			error: true,
