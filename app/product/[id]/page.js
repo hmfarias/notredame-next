@@ -16,10 +16,10 @@ export const generateMetadata = async ({ params }) => {
 	};
 };
 
-export const generateStaticParams = async () => {
-	const params = await getProductsFromServerParams();
-	return params;
-};
+// export const generateStaticParams = async () => {
+// 	const params = await getProductsFromServerParams();
+// 	return params;
+// };
 
 /**
  * @description Retuns the Product Detail page

@@ -4,10 +4,10 @@ import PageTitle from '@/components/PageTitle';
 import ProductListContainer from '@/components/ProductListContainer';
 import { Suspense } from 'react';
 
-export const generateStaticParams = async () => {
-	const params = await getProductsFromServerParams();
-	return params;
-};
+// export const generateStaticParams = async () => {
+// 	const params = await getProductsFromServerParams();
+// 	return params;
+// };
 
 /**
  * @description Returns the Products by Category page
