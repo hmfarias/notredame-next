@@ -4,6 +4,7 @@ import PageTitle from '@/components/PageTitle';
 import ProductListContainer from '@/components/ProductListContainer';
 import { Suspense } from 'react';
 
+// NOTA PARA EL PROFE: El codigo de abajo funciona y genera las páginas estáticas correctamente, pero a la hora de utilizar la version de producccion, (deploy con vercer), no se pueden apreciar correctamente las funcionalidades de alta de producto y la actualización de stock al crear una orden. Ello es debido justamente a que con el codigo de abajo, las paginas quedan estaticas y no se pueden actualizar ni para mostrar nuevos productos ni para ver el stock actualizado en uno de ellos.
 // export const generateStaticParams = async () => {
 // 	const params = await getProductsFromServerParams();
 // 	return params;
