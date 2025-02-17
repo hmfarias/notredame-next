@@ -4,6 +4,24 @@ import PageTitle from '@/components/PageTitle';
 import ProductDetailContainer from '@/components/ProductDetailContainer';
 import { Suspense } from 'react';
 
+// Generate metadata for each product
+export const generateMetadata = async ({ params }) => {
+	const { id } = awaitparams;
+	const { payload: product } = await getProductByIdFromServer(id);
+
+	if (error) {
+		return {
+			title: 'Error',
+			description: message,
+		};
+	}
+
+	return {
+		title: product.title,
+		description: product.description,
+	};
+};
+
 export const generateStaticParams = async () => {
 	const params = await getProductsFromServerParams();
 	return params;
