@@ -50,7 +50,6 @@ import { collection, getDocs, onSnapshot, query, where } from 'firebase/firestor
 // export default getProductsFromServer;
 const getProductsFromServer = async (category) => {
 	try {
-		const db = getFirestore(); // Inicializa Firestore
 		const productsCollection = collection(db, 'products');
 
 		const filter = category
