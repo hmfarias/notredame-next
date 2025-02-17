@@ -35,7 +35,7 @@
 1. [Introducción](#introduccion)
 2. [Construido con](#consturido)
 3. [Algunas Consideraciones](#consideraciones)
-   * [Router](#router)
+   * [StaticParams](#static)
    * [Local Storage](#localstorage)
    * [Comentarios en el código](#comentarios)
 5. [Esquema de la App](#esquema)
@@ -55,6 +55,8 @@
 Bienvenidos a **Notre Dame**, tu tienda polirubro online exclusiva. Aquí encontrarás una selección variada de artículos de gran calidad. Nuestro compromiso es ofrecer elementos de alta calidad, elaborados con los mejores materiales y un enfoque en la atención al detalle.
 
 Este repositorio contiene el código fuente de nuestra plataforma, desarrollada para brindar una experiencia de compra fluida y segura, asegurando que nuestros clientes puedan explorar y adquirir sus artículos favoritas de manera sencilla y rápida. ¡Gracias por visitarnos!
+
+Esta aplicación es una plataforma de comercio electrónico desarrollada con Next.js, que permite a los usuarios explorar productos, agregar artículos al carrito y realizar compras. Implementa un sistema de autenticación para administrar accesos y un panel de administración para gestionar productos. Se apoya en Firebase Firestore como base de datos y utiliza Context API para el manejo del estado global.
 
 [Volver al menú](#top)
 
@@ -78,7 +80,9 @@ Este repositorio contiene el código fuente de nuestra plataforma, desarrollada 
 
 <img alt="JavaScript" src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/> como lenguaje de programación interpretado, de alto nivel y dinámico. Se ejecuta en el navegador del cliente, lo que permite la creación de páginas web interactivas y dinámicas.
 
-![Static Badge](https://img.shields.io/badge/Firestore-yellow?style=for-the-badge) como base de datos de documentos NoSQL de Google Cloud Platform que permite almacenar, sincronizar y consultar datos para aplicaciones web y móviles.
+![Static Badge](https://img.shields.io/badge/Firesbase-yellow?style=for-the-badge) como base de datos de documentos NoSQL de Google Cloud Platform que permite almacenar, sincronizar y consultar datos para aplicaciones web y móviles.
+
+![Static Badge](https://img.shields.io/badge/Vercel-black?style=for-the-badge) como plataforma en la nube que permite a los desarrolladores crear, implementar, gestionar y escalar aplicaciones y sitios web.
 
 [Volver al menú](#top)
 
@@ -88,16 +92,23 @@ Este repositorio contiene el código fuente de nuestra plataforma, desarrollada 
 
 ## ALGUNAS CONSIDERACIONES
 
-<a name="router"></a>
+<a name="static"></a>
 
-### ROUTER
+### STATIC PARAMS
+La aplicación está diseñada para funcionar con “Static Params”; sin embargo, en la versión final, el código que habilita esta funcionalidad ha sido comentado. Esto se debe a que, al generar páginas estáticas para productos y categorías, la aplicación en producción (desplegada en Vercel) no reflejaba correctamente los nuevos productos añadidos ni las actualizaciones de stock tras una orden de compra.
 
+El uso de Static Params es ideal cuando el contenido general cambia poco. Esto mejora el rendimiento ya que reduce la carga en la base de datos, pues las páginas se generan solo una vez durante el build. Además, se optimiza el SEO ya que como las páginas ya están generadas, los motores de búsqueda pueden indexarlas más rápido.
+
+Sin embargo, para poder mostrar en producción las funcionalidades de carga de productos y procesamiento de ordenes con actualización de stock, y que los resultados de esas cargas en la BD puedan observarse, en este caso no resulta ideal la generacion de páginas estáticas, ya que el módulo de Admin está pensado para agregar productos y el procesamiento de una Orden de Compra actualiza el stock en los productos. Estos cambios no se reflejarán en la app hasta un nuevo despliegue, lo cual resulta bastante incómodo.
+
+Como solución, con fines didácticos se optó por una estrategia de renderizado dinámico para garantizar que los cambios en la base de datos se reflejen de inmediato en la interfaz del usuario.
 
 
 <a name="localstorage"></a>
 
 ### LOCAL STORAGE
 
+La App guarda el estado del carrito de compras en el Local Storage del navegador y lo mantiene actualizado cada vez que el mismo tiene alguna modificación. Finalmente lo vacía en caso de que el usuario procese una orden de Compra con éxito.
 
 
 <a name="comentarios"></a>
@@ -114,12 +125,52 @@ Tratándose de una aplicación de índole DIDACTICO, se han dejado en el código
 <a name="esquema"></a>
 
 ## ESQUEMA DE LA APP
-
+ 
 <div align="center">
   <a href="">
-    <img src="" alt="Logo" width="900" height="auto">
+    <img src="https://github.com/hmfarias/notredame-next/blob/main/public/appDiagram.png" alt="Logo" width="900" height="auto">
   </a>
 </div>
+
+## 📖 Flujo de la Aplicación
+
+### 🔹 Layout Principal
+La aplicación inicia en `app/layout.js`, que engloba los **providers de contexto**:
+- `AuthProvider.js` → Maneja la autenticación.
+- `CartProvider.js` → Maneja el estado del carrito.
+
+### 🔹 Navegación
+El `Header.js` contiene:
+- **Logo**
+- **CartWidget** → Muestra el estado del carrito.
+- **Navbar** → Menú de navegación principal.
+
+### 🔹 Página de Inicio
+`(home)/page.js` → Página principal de la app.
+
+### 🔹 Productos
+- `app/products/page.js` → Página de productos.
+- `ProductListContainer.js` → Obtiene productos desde Firebase.
+- `ProductList.js` → Muestra los productos en tarjetas (`ProductCard.js`).
+
+### 🔹 Autenticación
+- `app/login/page.js` → Página de inicio de sesión.
+- `handleLogin` en `AuthContext` maneja la autenticación del usuario.
+
+### 🔹 Administración de Productos
+- `app/admin/page.js` → Página de administración.
+- Permite **cargar nuevos productos** en Firebase.
+
+### 🔹 Carrito de Compras
+- `app/cart/page.js` → Página del carrito.
+- `Cart.js` muestra los productos agregados al carrito.
+
+### 🔹 Proceso de Compra
+- `app/admin/page.js` → Página de pago.
+- Captura datos del usuario y envía el pedido a Firebase (`createOrderInServer`).
+
+### 🔹 Footer
+- `components/Footer.js` → Pie de página de la app.
 
 [Volver al menú](#top)
 
