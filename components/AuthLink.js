@@ -6,16 +6,9 @@ import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 
 /**
- * @description The Auth Link component returns a link to the login or logout page depending on the user's status
+ * @description The Auth Link component returns a link to the login or execute the logout action
  * @module components/AuthLink.js
  * @returns {JSX.Element} - the Auth Link component
- * @exports AuthLink
- * @requires AuthContext
- * @requires CircleUserRound
- * @requires LogOutIcon
- * @requires Link
- * @requires useRouter
- * @requires useContext
  */
 const AuthLink = () => {
 	// consumes the context

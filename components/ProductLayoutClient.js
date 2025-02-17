@@ -8,11 +8,6 @@ import CategoryLink from './CategoryLink';
  * @description The Product Layout Client component returns a layout for the product page. It includes a sidebar with a dropdown list to select the category and the main content.
  * @module components/ProductLayoutClient.js
  * @returns {JSX.Element} - the Product Layout Client component
- * @exports ProductLayoutClient
- * @requires usePathname
- * @requires useRouter
- * @requires PageTitle
- * @requires CategoryLink
  */
 const ProductLayoutClient = ({ categories, children }) => {
 	const pathname = usePathname(); // Get the current route

@@ -13,7 +13,6 @@ const { Provider } = CartContext;
  * @description The Cart Context Provider is a React context provider that manages the shopping cart state of the application. It provides the cart state, functions to add, remove, and delete items from the cart, and a setter function to update the cart state.
  * @module providers/CartProvider.js
  * @returns {Object} - the Cart Context Provider
- * @exports CartContextProvider
  */
 export const CartContextProvider = (props) => {
 	//The shopping cart counter ("cartState") is application-wide in scope and can therefore be defined in this context

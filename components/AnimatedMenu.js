@@ -6,12 +6,6 @@ import AuthLinkMobile from './AuthLinkMobile';
  * @description The Animated Menu component returns a mobile menu with a fade-in animation when the menu is open
  * @module components/AnimatedMenu.js
  * @returns {JSX.Element} - the Animated Menu component
- * @exports AnimatedMenu
- * @requires motion
- * @requires AnimatePresence
- * @requires Link
- * @requires AdminLink
- * @requires AuthLinkMobile
  */
 const AnimatedMenu = ({ menuOpen, toggleMenu }) => {
 	return (

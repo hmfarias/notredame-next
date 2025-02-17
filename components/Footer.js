@@ -6,9 +6,6 @@ import Image from 'next/image';
  * @description Returns the Footer component
  * @module components/Footer.js
  * @returns {JSX.Element} - the Footer component
- * @exports Footer
- * @requires Image
- * @requires SocialButton
  */
 const Footer = () => {
 	return (

@@ -9,14 +9,6 @@ import { useState } from 'react';
  * @description Returns the navbar of the app (desktop and mobile).
  * @module components/Navbar.js
  * @returns {JSX.Element} - the Navbar component
- * @exports Navbar
- * @requires Link
- * @requires AdminLink
- * @requires AuthLink
- * @requires Menu
- * @requires X
- * @requires AnimatedMenu
- * @requires useState
  */
 const Navbar = () => {
 	const [menuOpen, setMenuOpen] = useState(false);

@@ -7,18 +7,18 @@ import CartContextProvider from '@/providers/CartProvider';
 import { ToastContainer } from 'react-toastify';
 
 export const metadata = {
-	title: 'NotreDame Ecommerce',
+	title: {
+		template: 'NotreDame - %s',
+		default: 'NotreDame',
+	},
 	authors: [{ name: 'Marcelo Farias' }],
 	description: 'E-Commerce Aplication',
 	keywords:
-		'ecommerce, polirubro, application, nextjs, tailwind, sass, react, lucide, tailwindcss, Marcelo Farias, programmer, argentina, ecommerce',
+		'ecommerce, polirubro, application, nextjs, tailwind, sass, react, lucide, tailwindcss, Marcelo Farias, programmer, argentina, ecommerce, programador, argentina',
 };
 
 /**
- * @description
- * The RootLayout component is the main layout of the application. It includes the Header and Footer components.
- * The Header component includes the site title and navigation menu.
- * The Footer component includes the site's footer content.
+ * @description The RootLayout component is the main layout of the application. It includes the Header and Footer components. The Header component includes the site title and navigation menu.The Footer component includes the site's footer content.
  * @module app/layout.js
  * @returns {JSX.Element} the main layout of the application
  * @exports RootLayout

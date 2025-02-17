@@ -1,5 +1,4 @@
 'use client';
-
 import createNewProduct from '@/actions/createNewProduct';
 import createNewProductInServer from '@/actions/createNewProductInServer';
 import getCategoriesList from '@/actions/getCategoriesList';
@@ -33,7 +32,7 @@ const AdminPage = () => {
 	const [categories, setCategories] = useState([]);
 
 	// consumes the context
-	const { logedIn, handleLogin, handleLogout, currentUser } = useContext(AuthContext);
+	const { logedIn } = useContext(AuthContext);
 	const router = useRouter();
 
 	useEffect(() => {

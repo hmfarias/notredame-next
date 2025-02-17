@@ -2,7 +2,7 @@ import { db } from '@/firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 
 /**
- * @description Fetches the products list from the API. If a category is provided, it fetches the products by category else it fetches all products
+ * @description Fetches the products list from the API. Just returns the products list from the server. If a category is provided, it fetches the products by category else it fetches all products. Returns an array of products ids. Its used in static generation.
  * @module actions/getProductsFromServer.js
  * @returns {Object} {payload: Array, message: String, error: Boolean} - products or products by category from the API depending if recieves a category parameter
  * @exports getProducts

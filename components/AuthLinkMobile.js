@@ -9,13 +9,6 @@ import { useContext } from 'react';
  * @description The Auth Link Mobile component returns a link to the login or logout page depending on the user's status and a toggleMenu function to toggle the menu
  * @module components/AuthLinkMobile.js
  * @returns {JSX.Element} - the Auth Link Mobile component
- * @exports AuthLinkMobile
- * @requires AuthContext
- * @requires CircleUserRound
- * @requires LogOutIcon
- * @requires Link
- * @requires useRouter
- * @requires useContext
  */
 const AuthLinkMobile = ({ toggleMenu }) => {
 	// consumes the context

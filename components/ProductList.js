@@ -7,10 +7,6 @@ import Link from 'next/link';
  * @description Returns a list of products. It is a list of cards with an image and information about the product.
  * @module components/ProductList.js
  * @returns {JSX.Element} - the Product List component
- * @exports ProductList
- * @requires MoveUpRight
- * @requires Image
- * @requires Link
  */
 const ProductList = ({ products }) => {
 	return (

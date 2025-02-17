@@ -13,10 +13,6 @@ import { useRouter } from 'next/navigation';
  * @description Returns the Product Detail component
  * @module components/ProductDetail.js
  * @returns {JSX.Element} - the Product Detail
- * @exports ProductDetail
- * @requires getProductById
- * @requires PageTitle
- * @requires DetailList
  */
 const ProductDetail = ({ product }) => {
 	//Receives from the ‘CartContext’ context, the value of the shopping cart counter and the updating function of that state.

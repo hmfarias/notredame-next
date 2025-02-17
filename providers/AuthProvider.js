@@ -28,7 +28,6 @@ export const AuthContextProvider = (props) => {
 		// Ensure that the user is logged out the first time the application is started.
 		signOut(auth)
 			.then(() => {
-				console.log('Disconnect user at the start of the app.');
 				setLogedIn(false);
 				setCurrentUser(null);
 			})
@@ -80,7 +79,6 @@ export const AuthContextProvider = (props) => {
 	};
 
 	const handleLogout = async () => {
-		console.log('logout');
 		await signOut(auth);
 		showSuccessToast(`User desconnected.`);
 	};

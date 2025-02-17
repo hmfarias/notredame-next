@@ -1,4 +1,4 @@
-import getProductsFromServer from '@/actions/getProductsFromServer';
+import getProductByIdFromServer from '@/actions/getProductByIdFromServer';
 import getProductsFromServerParams from '@/actions/getProductsFromServerParams';
 import LoadingSkeleton from '@/components/LoadingSkeleton';
 import PageTitle from '@/components/PageTitle';
@@ -8,18 +8,11 @@ import { Suspense } from 'react';
 // Generate metadata for each product
 export const generateMetadata = async ({ params }) => {
 	const { id } = await params;
-	const { payload: product, error } = await getProductsFromServer(id);
-
-	if (error) {
-		return {
-			title: 'Error',
-			description: message,
-		};
-	}
+	const { payload: producto } = await getProductByIdFromServer(id);
 
 	return {
-		title: product.title,
-		description: product.description,
+		title: producto.title,
+		description: producto.description,
 	};
 };
 

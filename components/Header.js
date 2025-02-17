@@ -8,10 +8,6 @@ import CartWidget from './CartWidget';
  * @description Returns the Header component
  * @module components/Header.js
  * @returns {JSX.Element} - the Header component
- * @exports Header
- * @requires LogoHeader
- * @requires Navbar
- * @requires CartWidget
  */
 const Header = () => {
 	return (

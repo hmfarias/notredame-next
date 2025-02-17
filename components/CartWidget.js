@@ -7,11 +7,6 @@ import { useContext } from 'react';
  * @description The Cart Widget component returns a link to the cart page with the total number of items in the shopping cart
  * @module components/CartWidget.js
  * @returns {JSX.Element} - the Cart Widget component
- * @exports CartWidget
- * @requires CartContext
- * @requires ShoppingCartIcon
- * @requires Link
- * @requires useContext
  */
 const CartWidget = () => {
 	//Receives from the ‘CartContext’ context, the cartState.

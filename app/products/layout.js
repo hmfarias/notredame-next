@@ -2,6 +2,7 @@ import getCategoriesList from '@/actions/getCategoriesList';
 import getCategoriesListFromServer from '@/actions/getCategoriesListFromServer';
 import PageTitle from '@/components/PageTitle';
 import ProductLayoutClient from '@/components/ProductLayoutClient';
+export const metadata = { title: 'Products' };
 
 /**
  * @description Returns the Product Layout (server-side)

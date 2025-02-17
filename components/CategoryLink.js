@@ -5,8 +5,6 @@ import Link from 'next/link';
  * @description The Category Link component returns a link to the product page of a category
  * @module components/CategoryLink.js
  * @returns {JSX.Element} - the Category Link component
- * @exports CategoryLink
- * @requires Link
  */
 const CategoryLink = ({ category, asOption }) => {
 	if (asOption) {

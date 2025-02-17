@@ -10,7 +10,7 @@ import {
 } from '@/utils/toasts';
 import { CartContext } from '@/providers/CartProvider';
 import { useRouter } from 'next/navigation';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 
 /**
  * @description returns the Payment page
@@ -23,6 +23,7 @@ const PymentPage = () => {
 	const [name, setName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [email, setEmail] = useState('');
+	const [address, setAddress] = useState('');
 	const { cartState, setCartState } = useContext(CartContext);
 
 	// consumes the context
@@ -31,7 +32,7 @@ const PymentPage = () => {
 	const router = useRouter();
 
 	// According to site politics, the following code may or may not be used
-	// If it is defined that the user must be logged in to be able to create an order must decom
+	// If it is defined that the user must be 'logged in' to be able to create an order must decom
 	// useEffect(() => {
 	// 	if (!logedIn) {
 	// 		router.push('/login');
@@ -43,6 +44,7 @@ const PymentPage = () => {
 		name: setName,
 		lastName: setLastName,
 		email: setEmail,
+		address: setAddress,
 	};
 
 	const handleChange = (e) => {
@@ -64,6 +66,10 @@ const PymentPage = () => {
 			showWarningToast('Please enter your last name');
 			return;
 		}
+		if (!address.trim()) {
+			showWarningToast('Please enter your shipping address');
+			return;
+		}
 		if (!email.trim()) {
 			showWarningToast('Please enter a valid email');
 			return;
@@ -77,6 +83,7 @@ const PymentPage = () => {
 				name,
 				lastName,
 				email,
+				address,
 			},
 			items: cartState.map((item) => ({
 				id: item.id,
@@ -114,7 +121,7 @@ const PymentPage = () => {
 		<>
 			<PageTitle>Chekout Page</PageTitle>
 			<form noValidate="" action="" className="p-4" onSubmit={handleSubmit}>
-				<fieldset className="w-11/12 max-w-7xl flex flex-col mx-auto space-y-12 px-4 rounded-lg shadow-md bg-white">
+				<fieldset className="w-11/11 max-w-7xl flex flex-col mx-auto space-y-12 px-4 rounded-lg shadow-md bg-white">
 					<div className="m-4 text-text">
 						<p className="font-bold text-2xl">Order Generation</p>
 					</div>
@@ -147,7 +154,6 @@ const PymentPage = () => {
 								onChange={handleChange}
 							/>
 						</div>
-
 						<div className="col-span-full md:col-span-2">
 							<label htmlFor="email" className="text-sm">
 								Email (*)
@@ -159,6 +165,20 @@ const PymentPage = () => {
 								placeholder="Your email here"
 								className="w-full rounded-md bg-primary/25 p-2 border-0 focus:border-2 focus:border-primary/20 focus:outline-none"
 								value={email}
+								onChange={handleChange}
+							/>
+						</div>
+						<div className="col-span-full">
+							<label htmlFor="address" className="text-sm">
+								Shipping address (*)
+							</label>
+							<textarea
+								name="address"
+								id="address"
+								rows="4"
+								placeholder="Enter shipping address..."
+								className="w-full rounded-md bg-primary/25 p-2 border-0 focus:border-2 focus:border-primary/20 focus:outline-none"
+								value={address}
 								onChange={handleChange}
 							/>
 						</div>

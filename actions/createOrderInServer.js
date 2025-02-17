@@ -3,7 +3,7 @@ import { dismissToasts, showLoadingToast } from '@/utils/toasts';
 import { addDoc, collection } from 'firebase/firestore';
 
 /**
- * @description This function creates a new order in the SERVER.
+ * @description This function creates a new order in the SERVER. It adds a new document to the 'orders' collection in Firestore.
  * @module actions/createOrder.js
  * @param {Object} order - The order object to be created
  * @returns {Object} - The response from the API

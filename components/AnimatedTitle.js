@@ -5,7 +5,6 @@ import { motion } from 'motion/react';
  * @description The Animated Title component returns a component that animates a title and a description on the page
  * @module components/AnimatedTitle.js
  * @returns {JSX.Element} - the Animated Title component
- * @exports AnimatedTitle
  * @requires motion
  */
 const AnimatedTitle = (props) => {
