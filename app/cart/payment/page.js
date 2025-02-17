@@ -11,6 +11,7 @@ import {
 import { CartContext } from '@/providers/CartProvider';
 import { useRouter } from 'next/navigation';
 import { useContext, useState } from 'react';
+import updateStockInServer from '@/actions/updateStockInServer';
 
 /**
  * @description returns the Payment page
@@ -95,13 +96,16 @@ const PymentPage = () => {
 			user: currentUser ? currentUser.email : 'guest@guest.com',
 		};
 
-		// Reset the form fields after submitting
-		setName('');
-		setLastName('');
-		setEmail('');
-
 		// Call createOrderInServer and handle the response
 		const { error } = await createOrderInServer(newOrderObj);
+
+		if (!error) {
+			// Update the stock products in database
+			const dataForUpdate = cartState.map(({ id, qtyItem }) => ({ id, qtyItem }));
+			updateStockInServer(dataForUpdate);
+			// Clear the cart
+			setCartState([]);
+		}
 
 		// Determine the toast type and action
 		const toastAction = error ? showErrorToastCloseAction : showSuccessToastCloseAction;
@@ -112,9 +116,13 @@ const PymentPage = () => {
 		// Show toast and wait for user confirmation
 		await new Promise((resolve) => toastAction(toastMessage, resolve));
 
-		// Navigate home, clearing the cart only if the order was successful
-		if (!error) setCartState([]);
-		router.push('/');
+		// Reset the form fields after submitting
+		setName('');
+		setLastName('');
+		setEmail('');
+		setAddress('');
+
+		router.push('/products');
 	};
 
 	return (

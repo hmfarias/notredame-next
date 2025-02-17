@@ -1,8 +1,7 @@
 /**
  * @description Is an internal component, which returns a component showing the available stock of the product, using conditional rendering and Tailwind's utility clas
  * @module GetStockMessage
- * @returns {JSX.Element} - the Get Stock Message component
- * @exports GetStockMessage
+ * @returns {JSX.Element} - the Get Stock Message components
  * @param {*} stock Is the amount of available stock of the product, which will be displayed with Conditional Rendering.
  */
 const GetStockMessage = ({ stock }) => {
