@@ -40,10 +40,11 @@
    * [Local Storage](#localstorage)
    * [Comentarios en el código](#comentarios)
 5. [Esquema de la App](#esquema)
-6. [Instalación en local](#instalacion)
-7. [Contribuyendo](#contribuyendo)
-8. [Licencia](#licencia)
-9. [Contacto](#contacto)
+6. [Ejecutando el Deploy](#deploy)
+7. [Instalación en local](#instalacion)
+8. [Contribuyendo](#contribuyendo)
+9. [Licencia](#licencia)
+10. [Contacto](#contacto)
 
 <hr>
 
@@ -192,6 +193,17 @@ El `Header.js` contiene:
 
 ### 🔹 Footer
 - `components/Footer.js` → Pie de página de la app.
+
+[Volver al menú](#top)
+
+<hr>
+
+
+<a name="deploy"></a>
+
+## EJECUTANDO EL DEPLOY
+
+Explora el sitio online haciendo click 🔗 [AQUÍ](https://notredame-next.vercel.app/) (Ctrl + clic para abrir en una nueva pestaña)
 
 [Volver al menú](#top)
 
